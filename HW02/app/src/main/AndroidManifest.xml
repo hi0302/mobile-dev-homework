@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HW02">
         <activity
-            android:name=".MainActivity"
+            android:name=".registerform"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
