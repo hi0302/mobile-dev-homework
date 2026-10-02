@@ -1,0 +1,80 @@
+<resources>
+    <style name="Glass.Kicker" parent="">
+        <item name="android:textColor">@color/glass_accent</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.16</item>
+    </style>
+    <style name="Glass.Title" parent="">
+        <item name="android:textColor">@color/glass_text</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="Glass.Subtitle" parent="">
+        <item name="android:textColor">@color/glass_text_secondary</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+    <style name="Glass.Card" parent="">
+        <item name="android:background">@drawable/glass_card</item>
+        <item name="android:padding">20dp</item>
+    </style>
+    <style name="Glass.Section" parent="Glass.Subtitle">
+        <item name="android:textColor">@color/glass_text</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="Glass.Label" parent="Glass.Subtitle">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="Glass.Input" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/glass_input</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:backgroundTint">@null</item>
+        <item name="android:textColor">@color/glass_text</item>
+        <item name="android:textColorHint">@color/glass_hint</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:minHeight">52dp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="Glass.Choice" parent="">
+        <item name="android:background">@drawable/glass_choice</item>
+        <item name="android:buttonTint">@color/glass_choice_tint</item>
+        <item name="buttonTint">@color/glass_choice_tint</item>
+        <item name="android:textColor">@color/glass_text</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">12dp</item>
+    </style>
+    <style name="Glass.Button" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/glass_secondary_button</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:backgroundTint">@null</item>
+        <item name="android:textColor">@color/glass_text</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">52dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    <style name="Glass.Button.Primary" parent="Glass.Button">
+        <item name="android:background">@drawable/glass_primary_button</item>
+        <item name="android:textColor">@color/glass_on_accent</item>
+    </style>
+    <style name="Glass.ResultValue" parent="Glass.Subtitle">
+        <item name="android:textColor">@color/glass_text</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+</resources>

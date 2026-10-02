@@ -2,4 +2,21 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="glass_background_start">#172447</color>
+    <color name="glass_background_end">#33295E</color>
+    <color name="glass_glow_lavender">#806E60D7</color>
+    <color name="glass_glow_mint">#5532B4B0</color>
+    <color name="glass_surface">#22FFFFFF</color>
+    <color name="glass_surface_end">#0FFFFFFF</color>
+    <color name="glass_border">#55FFFFFF</color>
+    <color name="glass_field">#18213252</color>
+    <color name="glass_field_focused">#50394972</color>
+    <color name="glass_choice_selected">#304FE0C2</color>
+    <color name="glass_text">#FFF8FAFF</color>
+    <color name="glass_text_secondary">#D4DDED</color>
+    <color name="glass_hint">#ADBBD2</color>
+    <color name="glass_accent">#9BF1DC</color>
+    <color name="glass_accent_end">#AFC9FF</color>
+    <color name="glass_on_accent">#172447</color>
+    <color name="glass_ripple">#33FFFFFF</color>
 </resources>
