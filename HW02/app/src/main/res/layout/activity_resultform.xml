@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/resultRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/glass_scene">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                style="@style/Glass.Kicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/result_step" />
+
+            <TextView
+                style="@style/Glass.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:accessibilityHeading="true"
+                android:text="@string/result_title" />
+
+            <TextView
+                style="@style/Glass.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/result_subtitle" />
+
+            <LinearLayout
+                style="@style/Glass.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/Glass.Section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:accessibilityHeading="true"
+                    android:text="@string/result_section" />
+
+                <TextView
+                    style="@style/Glass.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:labelFor="@id/txtUsername"
+                    android:text="@string/username_label" />
+
+                <TextView
+                    android:id="@+id/txtUsername"
+                    style="@style/Glass.ResultValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    tools:text="DangKhoa" />
+
+                <TextView
+                    style="@style/Glass.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:labelFor="@id/txtPassword"
+                    android:text="@string/password_label" />
+
+                <TextView
+                    android:id="@+id/txtPassword"
+                    style="@style/Glass.ResultValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    tools:text="********" />
+
+                <TextView
+                    style="@style/Glass.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:labelFor="@id/txtBirthdate"
+                    android:text="@string/birthdate_label" />
+
+                <TextView
+                    android:id="@+id/txtBirthdate"
+                    style="@style/Glass.ResultValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    tools:text="20/10/1989" />
+
+                <TextView
+                    style="@style/Glass.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:labelFor="@id/txtGender"
+                    android:text="@string/gender_label" />
+
+                <TextView
+                    android:id="@+id/txtGender"
+                    style="@style/Glass.ResultValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    tools:text="Male" />
+
+                <TextView
+                    style="@style/Glass.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:labelFor="@id/txtHobbies"
+                    android:text="@string/hobbies_label" />
+
+                <TextView
+                    android:id="@+id/txtHobbies"
+                    style="@style/Glass.ResultValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    tools:text="Tennis, Futbal" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnExit"
+                style="@style/Glass.Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/exit_action" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

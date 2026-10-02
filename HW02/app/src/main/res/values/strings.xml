@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">HW02</string>
+    <string name="register_step">01 / REGISTER</string>
+    <string name="register_title">Create your account</string>
+    <string name="register_subtitle">A little about you. All in one place.</string>
+    <string name="account_section">Account details</string>
+    <string name="profile_section">About you</string>
+    <string name="username_label">Username</string>
+    <string name="username_hint">Enter your username</string>
+    <string name="password_label">Password</string>
+    <string name="password_hint">Enter your password</string>
+    <string name="retype_label">Retype</string>
+    <string name="retype_hint">Repeat your password</string>
+    <string name="birthdate_label">Birthdate</string>
+    <string name="birthdate_hint">dd/mm/yyyy</string>
+    <string name="select_action">Select</string>
+    <string name="gender_label">Gender</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="hobbies_label">Hobbies</string>
+    <string name="hobby_tennis">Tennis</string>
+    <string name="hobby_futbal">Futbal</string>
+    <string name="hobby_others">Others</string>
+    <string name="reset_action">Reset</string>
+    <string name="signup_action">Sign-up</string>
+    <string name="result_step">02 / YOUR PROFILE</string>
+    <string name="result_title">Your registration</string>
+    <string name="result_subtitle">Your details, together at a glance.</string>
+    <string name="result_section">Profile summary</string>
+    <string name="exit_action">Exit</string>
+    <string name="hobbies_none">None</string>
+    <string name="value_unavailable">—</string>
 </resources>

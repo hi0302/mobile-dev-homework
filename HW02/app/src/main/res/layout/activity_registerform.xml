@@ -1,168 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/registerRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:background="@drawable/glass_scene">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
-
-        <!-- Username -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Username" />
-
-        <EditText
-            android:id="@+id/edtUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:maxLines="1" />
-
-        <!-- Password: textPassword để hiện dấu chấm, không hiện ký tự -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Password" />
-
-        <EditText
-            android:id="@+id/edtPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:maxLines="1" />
-
-        <!-- Retype -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Retype" />
-
-        <EditText
-            android:id="@+id/edtRetype"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:maxLines="1" />
-
-        <!-- Birthdate + nút Select -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Birthdate" />
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:focusableInTouchMode="true">
 
-            <EditText
-                android:id="@+id/edtBirthdate"
-                android:layout_width="0dp"
+            <TextView
+                style="@style/Glass.Kicker"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="dd/mm/yyyy"
-                android:inputType="date"
-                android:maxLines="1" />
+                android:text="@string/register_step" />
 
-            <Button
-                android:id="@+id/btnSelect"
-                android:layout_width="wrap_content"
+            <TextView
+                style="@style/Glass.Title"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Select" />
+                android:layout_marginTop="12dp"
+                android:accessibilityHeading="true"
+                android:text="@string/register_title" />
+
+            <TextView
+                style="@style/Glass.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/register_subtitle" />
+
+            <LinearLayout
+                style="@style/Glass.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/Glass.Section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:accessibilityHeading="true"
+                    android:text="@string/account_section" />
+
+                <TextView
+                    style="@style/Glass.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:labelFor="@id/edtUsername"
+                    android:text="@string/username_label" />
+
+                <EditText
+                    android:id="@+id/edtUsername"
+                    style="@style/Glass.Input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/username_hint"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"
+                    android:autofillHints="username"
+                    android:maxLines="1" />
+
+                <TextView
+                    style="@style/Glass.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:labelFor="@id/edtPassword"
+                    android:text="@string/password_label" />
+
+                <EditText
+                    android:id="@+id/edtPassword"
+                    style="@style/Glass.Input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/password_hint"
+                    android:inputType="textPassword"
+                    android:imeOptions="actionNext"
+                    android:autofillHints="newPassword"
+                    android:maxLines="1" />
+
+                <TextView
+                    style="@style/Glass.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:labelFor="@id/edtRetype"
+                    android:text="@string/retype_label" />
+
+                <EditText
+                    android:id="@+id/edtRetype"
+                    style="@style/Glass.Input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/retype_hint"
+                    android:inputType="textPassword"
+                    android:imeOptions="actionNext"
+                    android:autofillHints="newPassword"
+                    android:maxLines="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Glass.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/Glass.Section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:accessibilityHeading="true"
+                    android:text="@string/profile_section" />
+
+                <TextView
+                    style="@style/Glass.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:labelFor="@id/edtBirthdate"
+                    android:text="@string/birthdate_label" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/edtBirthdate"
+                        style="@style/Glass.Input"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/birthdate_hint"
+                        android:inputType="date"
+                        android:imeOptions="actionDone"
+                        android:importantForAutofill="no"
+                        android:maxLines="1" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSelect"
+                        style="@style/Glass.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/select_action" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/Glass.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/gender_label" />
+
+                <RadioGroup
+                    android:id="@+id/rgGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rbMale"
+                        style="@style/Glass.Choice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/gender_male" />
+
+                    <RadioButton
+                        android:id="@+id/rbFemale"
+                        style="@style/Glass.Choice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/gender_female" />
+                </RadioGroup>
+
+                <TextView
+                    style="@style/Glass.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/hobbies_label" />
+
+                <CheckBox
+                    android:id="@+id/cbTennis"
+                    style="@style/Glass.Choice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/hobby_tennis" />
+
+                <CheckBox
+                    android:id="@+id/cbFutbal"
+                    style="@style/Glass.Choice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/hobby_futbal" />
+
+                <CheckBox
+                    android:id="@+id/cbOthers"
+                    style="@style/Glass.Choice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/hobby_others" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnReset"
+                    style="@style/Glass.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/reset_action" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSignUp"
+                    style="@style/Glass.Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:text="@string/signup_action" />
+            </LinearLayout>
         </LinearLayout>
-
-        <!-- Gender -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Gender" />
-
-        <RadioGroup
-            android:id="@+id/rgGender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/rbMale"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Male" />
-
-            <RadioButton
-                android:id="@+id/rbFemale"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Female" />
-        </RadioGroup>
-
-        <!-- Hobbies -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Hobbies" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <CheckBox
-                android:id="@+id/cbTennis"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Tennis" />
-
-            <CheckBox
-                android:id="@+id/cbFutbal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Futbal" />
-
-            <CheckBox
-                android:id="@+id/cbOthers"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Others" />
-        </LinearLayout>
-
-        <!-- 2 nút dưới cùng -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnReset"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Reset" />
-
-            <Button
-                android:id="@+id/btnSignUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Sign-up" />
-        </LinearLayout>
-
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</FrameLayout>
