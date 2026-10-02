@@ -1,6 +1,6 @@
 package com.example.hw02
 
-
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -9,6 +9,8 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
+import java.util.Calendar
+import java.util.Locale
 
 class registerform : AppCompatActivity() {
 
@@ -36,9 +38,7 @@ class registerform : AppCompatActivity() {
         // button reset
         btnReset.setOnClickListener { resetForm() }
         btnSignUp.setOnClickListener { openResultForm() }
-
-        // button Select (datepicker): Gia Bảo sẽ bổ sung.
-        // btnSelect.setOnClickListener { ... }
+        btnSelect.setOnClickListener { showDatePickerDialog() }
     }
 
     private fun initViews() {
@@ -57,8 +57,45 @@ class registerform : AppCompatActivity() {
         btnSignUp = findViewById(R.id.btnSignUp)
     }
 
+    private fun showDatePickerDialog() {
+        val calendar = Calendar.getInstance()
+        val currentDateStr = edtBirthdate.text.toString().trim()
+        val parts = currentDateStr.split("/")
+        if (parts.size == 3) {
+            val day = parts[0].toIntOrNull()
+            val month = parts[1].toIntOrNull()
+            val year = parts[2].toIntOrNull()
+            if (day != null && month != null && year != null && month in 1..12) {
+                calendar.set(Calendar.YEAR, year)
+                calendar.set(Calendar.MONTH, month - 1)
+                calendar.set(Calendar.DAY_OF_MONTH, day)
+            }
+        }
+
+        val datePickerDialog = DatePickerDialog(
+            this,
+            androidx.appcompat.R.style.Theme_AppCompat_Light_Dialog,
+            { _, selectedYear, selectedMonth, selectedDay ->
+                val formattedDate = String.format(
+                    Locale.US,
+                    "%02d/%02d/%04d",
+                    selectedDay,
+                    selectedMonth + 1,
+                    selectedYear
+                )
+                edtBirthdate.setText(formattedDate)
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+        datePickerDialog.show()
+    }
+
     private fun openResultForm() {
-        // Khôi Nguyên / Gia Bảo sẽ nối validate() trước khi chuyển màn hình.
+        // Khôi Nguyên cần uncomment khối if phía dưới sau khi đã thực hiện hàm validate và đổi tên hàm(nếu khác).
+//        if (!validate()) return
+
         val gender = when (rgGender.checkedRadioButtonId) {
             R.id.rbMale -> "Male"
             R.id.rbFemale -> "Female"

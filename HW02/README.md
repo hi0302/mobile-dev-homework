@@ -13,16 +13,16 @@ Form đăng ký gồm hai activity: `registerform` (màn đăng ký, màn chạy
 - [x] Layout `resultform` và nhận dữ liệu từ `registerform` (Đăng Khoa)
 - [x] Nút **Exit** thoát hẳn ứng dụng (Đăng Khoa)
 - [ ] Validate: retype khớp password, birthdate đúng `dd/mm/yyyy`, không để trống, đã chọn gender, báo lỗi bằng Toast (Khôi Nguyên)
-- [ ] Nút **Select** mở `DatePickerDialog`, tự điền vào ô Birthdate (Gia Bảo)
-- [ ] Nút **Sign-up** gom dữ liệu, validate xong thì gửi sang `resultform` (Gia Bảo)
+- [x] Nút **Select** mở `DatePickerDialog`, tự điền vào ô Birthdate (Gia Bảo)
+- [ ] Nút **Sign-up** gom dữ liệu, chuẩn bị sẵn vị trí kiểm tra `validate()` rồi gửi sang `resultform` (Gia Bảo)
 
 Hai màn hình dùng giao diện glassmorphism: nền gradient với quầng sáng mềm, thẻ bán trong suốt có viền sáng, ô nhập có trạng thái focus và nút gradient. Các view ID, tên activity và key Bundle giữ nguyên theo quy ước. Hiệu ứng kính dùng drawable XML, tương thích từ API 24.
 
 `resultform` đã khai báo trong manifest (`exported="false"`), đọc năm String từ `intent.extras`, tự che mật khẩu bằng `*`, hiện `None` khi hobbies rỗng và gọi `finishAffinity()` khi bấm Exit. `registerform` vẫn là màn khởi chạy, giữ đầy đủ view trong `initViews()` và Reset xóa toàn bộ dữ liệu rồi focus Username.
 
-Nút Sign-up đã nối luồng đăng ký → kết quả: gom năm giá trị theo key Bundle bên dưới rồi mở `resultform`. Validation vẫn đang chờ Khôi Nguyên; Gia Bảo cần nối lời gọi `validate()` trước khi chuyển màn hình và bổ sung DatePicker cho nút Select. Vì vậy mục Sign-up trong checklist chưa đánh dấu hoàn tất và nút Select hiện chỉ có giao diện.
+Nút Sign-up đã hoàn tất logic gom dữ liệu và chuyển màn hình, đồng thời tích hợp DatePicker cho nút Select và dựng sẵn vị trí gọi `validate()`. Khôi Nguyên sau khi viết xong hàm `validate()` chỉ cần uncomment dòng kiểm tra trong `openResultForm()`. Vì vậy mục Sign-up trong checklist chưa đánh dấu hoàn tất và `validate()` chưa thể hoạt động.
 
-Kiểm tra trên emulator / thiết bị bằng `./gradlew connectedDebugAndroidTest`. `FormActivitiesTest` kiểm tra hiển thị Bundle, che mật khẩu sau khi tạo lại activity, hobbies rỗng, thiếu Bundle, chuỗi dài, Reset, bấm Sign-up để chuyển dữ liệu thật từ `registerform` và Exit đóng cả hai activity.
+Kiểm tra trên emulator / thiết bị bằng `./gradlew connectedDebugAndroidTest`. `FormActivitiesTest` kiểm tra hiển thị Bundle, che mật khẩu sau khi tạo lại activity, hobbies rỗng, thiếu Bundle, chuỗi dài, Reset, bấm Sign-up để chuyển dữ liệu thật từ `registerform` và Exit đóng cả hai activity. 
 
 ## Phân công
 
