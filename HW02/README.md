@@ -12,7 +12,7 @@ Form đăng ký gồm hai activity: `registerform` (màn đăng ký, màn chạy
 - [x] Nút **Reset** xóa trắng toàn bộ form (Diễm Thúy)
 - [x] Layout `resultform` và nhận dữ liệu từ `registerform` (Đăng Khoa)
 - [x] Nút **Exit** thoát hẳn ứng dụng (Đăng Khoa)
-- [ ] Validate: retype khớp password, birthdate đúng `dd/mm/yyyy`, không để trống, đã chọn gender, báo lỗi bằng Toast (Khôi Nguyên)
+- [x] Validate: retype khớp password, birthdate đúng `dd/mm/yyyy`, không để trống, đã chọn gender, báo lỗi bằng Toast (Khôi Nguyên)
 - [x] Nút **Select** mở `DatePickerDialog`, tự điền vào ô Birthdate (Gia Bảo)
 - [ ] Nút **Sign-up** gom dữ liệu, chuẩn bị sẵn vị trí kiểm tra `validate()` rồi gửi sang `resultform` (Gia Bảo)
 
