@@ -11,6 +11,8 @@ import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import java.util.Calendar
 import java.util.Locale
+import android.widget.Toast
+import java.text.SimpleDateFormat
 
 class registerform : AppCompatActivity() {
 
@@ -92,9 +94,47 @@ class registerform : AppCompatActivity() {
         datePickerDialog.show()
     }
 
+    private fun validate(): Boolean {
+        // Chuyển về string để so sánh chuỗi
+        val username = edtUsername.text.toString().trim()
+        val password = edtPassword.text.toString()
+        val retype = edtRetype.text.toString()
+        val birthdate = edtBirthdate.text.toString().trim()
+
+        fun error(message: String): Boolean {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (username.isEmpty()) return error("Username không được để trống")
+
+        if (password.isEmpty()) return error("Password không được để trống")
+
+        if (retype.isEmpty()) return error("Hãy nhập lại password")
+
+        if (birthdate.isEmpty()) return error("Ngày sinh không được để trống")
+
+        if (password != retype) return error("Mật khẩu nhập lại không khớp")
+
+        if (!birthdate.matches(
+            Regex("\\d{2}/\\d{2}/\\d{4}")
+        )) return error("Ngày sinh phải có dạng dd/MM/yyyy")
+
+        // format chuẩn
+        val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.US)
+        // không cho phép tự chỉnh ngày khi nhập không hợp lệ
+        formatter.isLenient = false
+
+        if (runCatching{ formatter.parse(birthdate) }.getOrNull() == null) {
+            return error("Ngày sinh không hợp lệ")
+        }
+
+        if (rgGender.checkedRadioButtonId == -1) return error("Vui lòng chọn giới tính")
+
+        return true
+    }
     private fun openResultForm() {
         // Khôi Nguyên cần uncomment khối if phía dưới sau khi đã thực hiện hàm validate và đổi tên hàm(nếu khác).
-//        if (!validate()) return
+        if (!validate()) return
 
         val gender = when (rgGender.checkedRadioButtonId) {
             R.id.rbMale -> "Male"
