@@ -83,7 +83,7 @@ File: `Paginator.kt`, `app/src/test/java/com/example/hw03/PaginatorTest.kt` (t�
 
 [ ] Giữ nguyên chữ ký: `Paginator<T>(items: List<T>, pageSize: Int)`, `pageCount`, `clampPage(Int): Int`, `itemsOf(Int): List<T>`
 
-## Phần 4 – Nút chuyển trang (branch `hw03-page-buttons`)
+## Phần 4 – Nút chuyển trang (Nguyễn Đặng Khôi Nguyên, branch `hw03-page-buttons`)
 
 File: `PageButtonController.kt`
 
