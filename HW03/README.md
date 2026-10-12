@@ -87,17 +87,17 @@ File: `Paginator.kt`, `app/src/test/java/com/example/hw03/PaginatorTest.kt` (t�
 
 File: `PageButtonController.kt`
 
-[ ]  `render(pageCount, currentPage)`: nút của trang hiện tại bị mờ (`alpha = 0.35f`) và `isEnabled = false`, các nút còn lại sáng (`alpha = 1f`, `isEnabled = true`)
+[x]  `render(pageCount, currentPage)`: nút của trang hiện tại bị mờ (`alpha = 0.35f`) và `isEnabled = false`, các nút còn lại sáng (`alpha = 1f`, `isEnabled = true`)
 
-[ ] Nút có index lớn hơn hoặc bằng `pageCount` thì ẩn (`View.GONE`), nút hợp lệ thì hiện (`View.VISIBLE`)
+[x] Nút có index lớn hơn hoặc bằng `pageCount` thì ẩn (`View.GONE`), nút hợp lệ thì hiện (`View.VISIBLE`)
 
-[ ] Đặt `contentDescription` "Page N" cho từng nút trong `init` (`R.string.page_button_description`)
+[x] Đặt `contentDescription` "Page N" cho từng nút trong `init` (`R.string.page_button_description`)
 
-[ ] Gắn click listener gọi `onPageSelected(index)` với index đúng thứ tự nút (0, 1, 2)
+[x] Gắn click listener gọi `onPageSelected(index)` với index đúng thứ tự nút (0, 1, 2)
 
-[ ] Hằng số độ mờ đặt trong `companion object`, không để số cứng rải rác 
+[x] Hằng số độ mờ đặt trong `companion object`, không để số cứng rải rác 
 
-[ ] Giữ nguyên chữ ký: `PageButtonController(buttons: List<Button>, onPageSelected: (Int) -> Unit)`, `fun render(pageCount: Int, currentPage: Int)`
+[x] Giữ nguyên chữ ký: `PageButtonController(buttons: List<Button>, onPageSelected: (Int) -> Unit)`, `fun render(pageCount: Int, currentPage: Int)`
 
 ---
 
