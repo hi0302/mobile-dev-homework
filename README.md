@@ -18,7 +18,7 @@ Mỗi bài có README riêng ghi tiến độ, phân công và quy ước của 
 | Bài | Nội dung | Chi tiết |
 | --- | --- | --- |
 | HW02 | Xây dựng giao diện người dùng (form đăng ký) | [HW02/README.md](HW02/README.md) |
-| HW03 | (cập nhật sau) | |
+| HW03 | Tùy biến ListView (CustomListDemo) | HW03/README.md |
 
 ## Cấu trúc repo
 

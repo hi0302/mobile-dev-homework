@@ -33,7 +33,7 @@ Kiểm tra trên emulator / thiết bị bằng `./gradlew connectedDebugAndroid
 | Khôi Nguyên | `hw02-validation` | Validation |
 | Gia Bảo | `hw02-datepicker` | DatePicker + nút Sign-up |
 
-### Diễm Thúy: Setup + `registerform` UI + Reset (đã hoàn thành)
+### Diễm Thúy: Setup + `registerform` UI + Reset 
 
 - Đổi `MainActivity` thành activity `registerform` (màn chạy đầu tiên)
 - Layout `registerform` gồm: Username, Password, Retype, Birthdate + nút Select, Gender (RadioGroup), Hobbies (3 CheckBox), nút Reset và Sign-up
@@ -80,4 +80,4 @@ Kiểm tra trên emulator / thiết bị bằng `./gradlew connectedDebugAndroid
 
 ## Nộp bài
 
-Nén folder `HW02` thành `MSSV.zip` hoặc `MSSV.rar` (hỏi thầy dùng MSSV của ai), xóa `build/` trước khi nén.
+Nén folder `HW02` thành `MSSV.zip` hoặc `MSSV.rar`, xóa `build/` trước khi nén.

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/surface">
+
+    <TextView
+        android:id="@+id/txtChoose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textColor="@color/ink"
+        android:textSize="20sp"
+        android:accessibilityLiveRegion="polite" />
+
+    <ListView
+        android:id="@+id/listContacts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:scrollbars="none" />
+
+    <LinearLayout
+        android:id="@+id/pageBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <Button
+            android:id="@+id/btnPage1"
+            style="@style/PageButton"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/btnPage2"
+            style="@style/PageButton"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/btnPage3"
+            style="@style/PageButton"
+            android:text="3" />
+    </LinearLayout>
+</LinearLayout>
