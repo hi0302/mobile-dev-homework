@@ -1,6 +1,7 @@
 package com.example.hw03
 
 import android.widget.Button
+import android.view.View
 
 /**
  * TODO: hoàn thiện điều khiển 3 nút trang.
@@ -14,13 +15,40 @@ class PageButtonController(
     private val buttons: List<Button>,
     private val onPageSelected: (Int) -> Unit,
 ) {
+    companion object {
+        private const val DISABLED_ALPHA = 0.35f
+        private const val ENABLED_ALPHA = 1.0f
+    }
+    
     init {
         buttons.forEachIndexed { index, button ->
-            button.setOnClickListener { onPageSelected(index) }
+            button.contentDescription = button.context.getString(
+                R.string.page_button_description,
+                index + 1
+            )
+            button.setOnClickListener { 
+                onPageSelected(index)
+            }
         }
     }
 
     fun render(pageCount: Int, currentPage: Int) {
-        // TODO
+        buttons.forEachIndexed { index, button ->
+            if (index >= pageCount) {
+                button.visibility = View.GONE
+                return@forEachIndexed
+            }
+
+            button.visibility = View.VISIBLE
+
+            if (index == currentPage) {
+                button.alpha = DISABLED_ALPHA
+                button.isEnabled = false
+            }
+            else {
+                button.alpha = ENABLED_ALPHA
+                button.isEnabled = true
+            }
+        }
     }
 }
