@@ -49,21 +49,21 @@ File: toàn bộ khung project, `Contact.kt`, `SelectionState.kt`, `MainActivity
 
 [x] Tạo các file stub cho phần 2, 3, 4 (có TODO) sao cho project build được
 
-## Phần 2 – Dữ liệu và Adapter (branch `hw03-adapter`)
+## Phần 2 – Dữ liệu và Adapter (Phạm Gia Bảo, branch `hw03-adapter`)
 
 File: `ContactRepository.kt`, `ContactAdapter.kt`
 
-[ ] `ContactAdapter.getView`: dùng ViewHolder và tái sử dụng `convertView`, không gọi `findViewById` lại mỗi lần 
+[x] `ContactAdapter.getView`: dùng ViewHolder và tái sử dụng `convertView`, không gọi `findViewById` lại mỗi lần 
 
-[ ] Dòng có `contact.id == selectedId` tô màu `R.color.row_selected`, dòng khác để trong suốt (nhớ đặt lại màu khi tái sử dụng view)
+[x] Dòng có `contact.id == selectedId` tô màu `R.color.row_selected`, dòng khác để trong suốt (nhớ đặt lại màu khi tái sử dụng view)
 
-[ ] Đặt `contentDescription` cho từng dòng (`R.string.contact_description`)
+[x] Đặt `contentDescription` cho từng dòng (`R.string.contact_description`)
 
-[ ] Xử lý an toàn khi `position` nằm ngoài danh sách (không crash)
+[x] Xử lý an toàn khi `position` nằm ngoài danh sách (không crash)
 
-[ ] `selectedId` chỉ gọi `notifyDataSetChanged()` khi giá trị thật sự đổi 
+[x] `selectedId` chỉ gọi `notifyDataSetChanged()` khi giá trị thật sự đổi 
 
-[ ] Giữ nguyên chữ ký: `var selectedId: Int`, `fun submit(newItems: List<Contact>)`, `getItem(position): Contact?`, `ContactRepository.sample(): List<Contact>`
+[x] Giữ nguyên chữ ký: `var selectedId: Int`, `fun submit(newItems: List<Contact>)`, `getItem(position): Contact?`, `ContactRepository.sample(): List<Contact>`
 
 ## Phần 3 – Phân trang (branch `hw03-paginator`)
 
