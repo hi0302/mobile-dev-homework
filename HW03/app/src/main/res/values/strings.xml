@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CustomListDemo</string>
+    <string name="you_choose">You choose: %1$s</string>
+    <string name="contact_description">%1$s, %2$s</string>
+    <string name="page_button_description">Page %1$d</string>
+</resources>
