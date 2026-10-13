@@ -7,4 +7,15 @@
     <string name="page_1" translatable="false">1</string>
     <string name="page_2" translatable="false">2</string>
     <string name="page_3" translatable="false">3</string>
+    <string name="directory_label">CONTACT BOOK</string>
+    <string name="contacts_title">Contacts</string>
+    <plurals name="directory_summary">
+        <item quantity="one">%1$d contact · %2$d per page</item>
+        <item quantity="other">%1$d contacts · %2$d per page</item>
+    </plurals>
+    <string name="all_contacts_label">ALL CONTACTS</string>
+    <string name="selection_label">YOUR SELECTION</string>
+    <string name="selection_hint">Tap a contact to select</string>
+    <string name="contact_range">%1$d–%2$d of %3$d</string>
+    <string name="page_summary">Page %1$d of %2$d</string>
 </resources>

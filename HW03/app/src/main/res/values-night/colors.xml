@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="surface">#121212</color>
-    <color name="ink">#F2F2F2</color>
-    <color name="row_selected">#5A4A14</color>
-    <color name="divider">#F2F2F2</color>
-    <color name="icon_background">#5A4A14</color>
+    <color name="surface">#000000</color>
+    <color name="card_surface">#1C1C1E</color>
+    <color name="ink">#F5F5F7</color>
+    <color name="secondary_ink">#A9A9B2</color>
+    <color name="row_selected">#40351E</color>
+    <color name="divider">#343438</color>
+    <color name="accent">#64ACFF</color>
+    <color name="avatar_surface">#33333B</color>
+    <color name="ripple">#3364ACFF</color>
+    <color name="icon_background">#0066DD</color>
 </resources>

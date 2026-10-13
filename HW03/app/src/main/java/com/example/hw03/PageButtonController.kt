@@ -34,6 +34,7 @@ class PageButtonController(
 
     fun render(pageCount: Int, currentPage: Int) {
         buttons.forEachIndexed { index, button ->
+            button.isSelected = index == currentPage && index < pageCount
             if (index >= pageCount) {
                 button.visibility = View.GONE
                 return@forEachIndexed

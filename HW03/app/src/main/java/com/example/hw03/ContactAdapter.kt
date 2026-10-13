@@ -63,24 +63,36 @@ class ContactAdapter(private val context: Context) : BaseAdapter() {
 
             if (contact.id == selectedId) {
                 view.setBackgroundColor(ContextCompat.getColor(context, R.color.row_selected))
+                view.isSelected = true
+                holder.imgSelected.visibility = View.VISIBLE
             } else {
                 view.setBackgroundColor(Color.TRANSPARENT)
+                view.isSelected = false
+                holder.imgSelected.visibility = View.INVISIBLE
             }
+            holder.divider.visibility = if (position == items.lastIndex) View.INVISIBLE else View.VISIBLE
         } else {
             holder.imgAvatar.setImageDrawable(null)
             holder.txtName.text = ""
             holder.txtPhone.text = ""
             view.contentDescription = null
             view.setBackgroundColor(Color.TRANSPARENT)
+            view.isSelected = false
+            holder.imgSelected.visibility = View.INVISIBLE
+            holder.divider.visibility = View.INVISIBLE
         }
 
         return view
     }
 
     private class ViewHolder(view: View) {
-        val imgAvatar: ImageView = view.findViewById(R.id.imgAvatar)
+        val imgAvatar: ImageView = view.findViewById<ImageView>(R.id.imgAvatar).apply {
+            clipToOutline = true
+        }
         val txtName: TextView = view.findViewById(R.id.txtName)
         val txtPhone: TextView = view.findViewById(R.id.txtPhone)
+        val imgSelected: ImageView = view.findViewById(R.id.imgSelected)
+        val divider: View = view.findViewById(R.id.contactDivider)
     }
 }
 

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainRoot"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/columnGuide" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:orientation="vertical" app:layout_constraintGuide_percent="0.6" />
+
+    <LinearLayout
+        android:layout_width="0dp" android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@id/columnGuide"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="20dp" android:layout_marginEnd="16dp"
+        android:paddingVertical="12dp" android:orientation="vertical">
+        <TextView
+            android:id="@+id/txtContactsTitle"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium" android:letterSpacing="-0.03"
+            android:text="@string/contacts_title" android:textColor="@color/ink" android:textSize="26sp" />
+        <TextView
+            android:id="@+id/txtDirectorySummary"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="2dp" android:textColor="@color/secondary_ink" android:textSize="12sp" />
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:layout_marginBottom="8dp"
+            android:orientation="horizontal" android:gravity="center_vertical">
+            <TextView style="@style/SectionLabel" android:layout_width="0dp"
+                android:layout_weight="1" android:text="@string/all_contacts_label" />
+            <TextView
+                android:id="@+id/txtContactRange"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/secondary_ink" android:textSize="12sp" />
+        </LinearLayout>
+        <ListView
+            android:id="@+id/listContacts"
+            android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+            android:background="@drawable/bg_panel" android:divider="@null" android:dividerHeight="0dp"
+            android:overScrollMode="ifContentScrolls" android:scrollbars="vertical" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp" android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/columnGuide" app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="20dp" android:paddingVertical="12dp" android:orientation="vertical">
+        <FrameLayout android:layout_width="match_parent" android:layout_height="42dp">
+            <TextView style="@style/SectionLabel" android:layout_gravity="start|center_vertical"
+                android:layout_marginEnd="50dp" android:text="@string/directory_label" android:textColor="@color/accent" />
+            <ImageView
+                android:id="@+id/imgBrand"
+                android:layout_width="42dp" android:layout_height="42dp" android:layout_gravity="end"
+                android:background="@drawable/bg_brand" android:src="@drawable/ic_launcher_foreground"
+                android:importantForAccessibility="no" />
+        </FrameLayout>
+        <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:background="@drawable/bg_panel"
+            android:padding="14dp" android:orientation="vertical">
+            <TextView style="@style/SectionLabel" android:text="@string/selection_label" />
+            <TextView
+                android:id="@+id/txtChoose"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" android:fontFamily="sans-serif-medium"
+                android:textColor="@color/ink" android:textSize="16sp" android:accessibilityLiveRegion="polite" />
+            <TextView
+                android:id="@+id/txtSelectionDetail"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="3dp" android:textColor="@color/secondary_ink" android:textSize="13sp" />
+        </LinearLayout>
+        <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+        <TextView
+            android:id="@+id/txtPageSummary"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:layout_marginBottom="8dp"
+            android:textColor="@color/secondary_ink" android:textSize="12sp" android:accessibilityLiveRegion="polite" />
+        <LinearLayout
+            android:id="@+id/pageBar" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="end">
+            <Button android:id="@+id/btnPage1" style="@style/PageButton" android:text="@string/page_1" />
+            <Button android:id="@+id/btnPage2" style="@style/PageButton" android:text="@string/page_2" />
+            <Button android:id="@+id/btnPage3" style="@style/PageButton" android:text="@string/page_3" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

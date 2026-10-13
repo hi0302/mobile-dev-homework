@@ -3,6 +3,6 @@
     android:width="108dp" android:height="108dp"
     android:viewportWidth="108" android:viewportHeight="108">
     <!-- Số 1 nằm trong vùng an toàn của adaptive icon. -->
-    <path android:fillColor="@color/ink"
+    <path android:fillColor="@color/icon_foreground"
         android:pathData="M36,43 L49,32 L60,32 L60,72 L72,72 L72,80 L36,80 L36,72 L48,72 L48,44 L42,49 Z" />
 </vector>

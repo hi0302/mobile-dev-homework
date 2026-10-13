@@ -4,6 +4,16 @@ Danh bạ gồm 15 liên hệ, mỗi trang 5 dòng, chuyển trang bằng 3 nút
 
 Công nghệ: Kotlin, XML layout (Views), ListView + BaseAdapter tùy biến. Không dùng Compose.
 
+## Giao diện
+
+Giao diện lấy cảm hứng từ danh bạ iOS: tiêu đề lớn, nền xám nhẹ, nhóm liên hệ bo góc, đường phân cách mảnh và điểm nhấn xanh. Dark mode dùng nền đen với các nhóm màu than.
+
+- Hiển thị tổng số liên hệ, số dòng mỗi trang, khoảng liên hệ đang xem và trang hiện tại.
+- Mỗi dòng có avatar tròn, họ tên và số điện thoại. Dòng chọn vẫn tô vàng theo đề, thêm dấu check và trạng thái selected cho accessibility.
+- Khung "Your selection" giữ nguyên TextView `You choose: <họ tên>`, bổ sung số điện thoại hoặc gợi ý chọn khi chưa chọn ai.
+- Bố cục ngang tách danh sách và thông tin chọn thành hai cột; danh sách cuộn được khi không đủ chiều cao. Tên dài được xuống dòng.
+- Ba nút trang có vùng bấm 48dp, trang hiện tại vẫn mờ 0.35 và không bấm được. Icon ứng dụng vẫn là số **1**, màu trắng trên nền xanh.
+
 ## Tiến độ
 
 - Phần 1 – Base: khung project, MainActivity, SelectionState (branch `hw03-base`)
@@ -143,7 +153,7 @@ File: `PageButtonController.kt`
 ## Thay đổi ảnh hưởng người khác
 
 - Hoàn tất `Paginator.kt` và thêm `PaginatorTest.kt`; giữ nguyên chữ ký API, id view và key Bundle.
-- Đổi launcher icon từ hình người sang số **1**, dùng chung cho icon thường/round và thêm lớp monochrome cho themed icons. Màu số/nền thích ứng light/dark.
+- Đổi launcher icon từ hình người sang số **1**, dùng chung cho icon thường/round và thêm lớp monochrome cho themed icons. Bản UI mới dùng số trắng trên nền xanh ở cả light/dark.
 - Thêm `ContactsActivityTest.kt` để kiểm tra tích hợp phần 1, 2, 3, 4. Bổ sung kiểm tra số điện thoại duy nhất, vòng avatar và dùng JUnit assertions trong `ContactRepositoryTest`.
 - Đưa nhãn nút trang vào strings, dùng nền từ theme để tránh overdraw, tăng vùng bấm nút từ 40dp lên 48dp. Bỏ chú thích TODO đã hoàn thành trong `PageButtonController`; bỏ qua cache `.kotlin/` trong Git.
 
@@ -158,8 +168,11 @@ File: `PageButtonController.kt`
 - `testDebugUnitTest`: **12/12 pass** (10 PaginatorTest, 2 ContactRepositoryTest).
 - `assembleDebug` và `assembleDebugAndroidTest`: build thành công.
 - `lintDebug`: **0 lỗi, 1 cảnh báo** về phiên bản AGP mới hơn; giữ toolchain hiện tại của nhóm.
-- `connectedDebugAndroidTest`: **7/7 pass** trên Pixel_7a, Android 17 / API 37. Chạy lại cả 7 test trên APK cuối sau các chỉnh sửa layout cũng pass.
+- Test tích hợp: **7/7 pass** trên Pixel_7a, Android 17 / API 37, đã chạy lại trên APK với UI mới. Có thể chạy qua `connectedDebugAndroidTest` hoặc AndroidJUnitRunner trực tiếp bằng adb.
+- Chạy thêm test light/dark và xoay ngang/dọc với cỡ chữ hệ thống **130%**: **2/2 pass**. Đã xem ảnh chụp và kiểm tra cuộn tới dòng cuối trên bố cục ngang.
 - Test tích hợp kiểm tra đủ 3 trang, 5 liên hệ/trang, TextView ban đầu và sau chọn; giữ lựa chọn qua đổi trang, tái tạo Activity và xoay ngang/dọc thật; bấm trang hiện tại không tải lại, chuyển trang liên tục; tái sử dụng row, xóa highlight cũ, position không hợp lệ; hiển thị/ẩn/độ mờ/callback của nút; Bundle hợp lệ/không hợp lệ; light/dark với độ tương phản chữ tối thiểu 4.5:1.
 - Đã xem ảnh chụp giao diện và launcher icon số **1** ở cả hai chế độ. Manifest dùng cùng icon cho `icon` và `roundIcon`; icon API 24–25 và adaptive icon API 26+ dùng chung vector số 1.
 
-Ảnh kiểm chứng: [giao diện sáng](docs/screenshots/contacts-light.png), [giao diện tối](docs/screenshots/contacts-dark.png), [icon số 1 sáng](docs/screenshots/launcher-light.png), [icon số 1 tối](docs/screenshots/launcher-dark.png).
+Ảnh kiểm chứng: [giao diện sáng](docs/screenshots/contacts-light.png), [giao diện tối](docs/screenshots/contacts-dark.png), [bố cục ngang](docs/screenshots/contacts-landscape.png), [icon số 1 sáng](docs/screenshots/launcher-light.png), [icon số 1 tối](docs/screenshots/launcher-dark.png).
+
+Cỡ chữ 130%: [sáng](docs/screenshots/contacts-light-large-text.png), [tối](docs/screenshots/contacts-dark-large-text.png), [ngang](docs/screenshots/contacts-landscape-large-text.png).

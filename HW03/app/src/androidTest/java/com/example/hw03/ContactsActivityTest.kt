@@ -22,6 +22,7 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import org.hamcrest.Matchers.anything
@@ -51,10 +52,20 @@ class ContactsActivityTest {
                 } while (orientation != expected && SystemClock.uptimeMillis() < deadline)
                 assertEquals(expected, orientation)
                 assertPage(scenario, 2)
+                onView(withId(R.id.btnPage1)).check(matches(isDisplayed()))
+                onView(withId(R.id.listContacts)).check(matches(isDisplayed()))
                 onView(withId(R.id.txtChoose)).check(matches(withText("You choose: Võ Văn M")))
                 scenario.onActivity { activity ->
                     val adapter = activity.findViewById<ListView>(R.id.listContacts).adapter as ContactAdapter
                     assertEquals(13, adapter.selectedId)
+                }
+                if (expected == Configuration.ORIENTATION_LANDSCAPE) {
+                    captureScreenshot("contacts-landscape")
+                    onView(withId(R.id.btnPage1)).perform(click())
+                    onData(anything()).inAdapterView(withId(R.id.listContacts)).atPosition(4).perform(click())
+                    onView(withId(R.id.txtChoose)).check(matches(withText("You choose: Đinh Văn D")))
+                    onView(withId(R.id.btnPage3)).perform(click())
+                    onData(anything()).inAdapterView(withId(R.id.listContacts)).atPosition(2).perform(click())
                 }
             }
         }
@@ -64,6 +75,8 @@ class ContactsActivityTest {
     fun launchAndAllThreePagesMatchRepositoryAndButtonStates() {
         ActivityScenario.launch(MainActivity::class.java).use { scenario ->
             onView(withId(R.id.txtChoose)).check(matches(withText("You choose: ")))
+            onView(withId(R.id.txtDirectorySummary)).check(matches(withText("15 contacts · 5 per page")))
+            onView(withId(R.id.txtSelectionDetail)).check(matches(withText(R.string.selection_hint)))
             for (page in 0..2) {
                 if (page > 0) onView(withId(buttonIds[page])).perform(click())
                 assertPage(scenario, page)
@@ -76,6 +89,7 @@ class ContactsActivityTest {
         ActivityScenario.launch(MainActivity::class.java).use { scenario ->
             onData(anything()).inAdapterView(withId(R.id.listContacts)).atPosition(1).perform(click())
             onView(withId(R.id.txtChoose)).check(matches(withText("You choose: Lê Thị B")))
+            onView(withId(R.id.txtSelectionDetail)).check(matches(withText("0967995843")))
             scenario.onActivity { activity ->
                 val list = activity.findViewById<ListView>(R.id.listContacts)
                 assertEquals(activity.getColor(R.color.row_selected), (list.getChildAt(1).background as ColorDrawable).color)
@@ -124,9 +138,13 @@ class ContactsActivityTest {
                 assertEquals(1, changes)
                 val row = adapter.getView(0, null, parent)
                 assertEquals(activity.getColor(R.color.row_selected), (row.background as ColorDrawable).color)
+                assertTrue(row.isSelected)
+                assertEquals(View.VISIBLE, row.findViewById<View>(R.id.imgSelected).visibility)
                 assertEquals(activity.getString(R.string.contact_description, first.name, first.phone), row.contentDescription)
                 assertSame(row, adapter.getView(1, row, parent))
                 assertEquals(Color.TRANSPARENT, (row.background as ColorDrawable).color)
+                assertFalse(row.isSelected)
+                assertEquals(View.INVISIBLE, row.findViewById<View>(R.id.imgSelected).visibility)
                 assertEquals(ContactRepository.sample()[1].name, row.findViewById<TextView>(R.id.txtName).text.toString())
                 for (position in listOf(-1, 15, Int.MAX_VALUE)) {
                     assertNull(adapter.getItem(position))
@@ -204,9 +222,10 @@ class ContactsActivityTest {
                         assertEquals(if (name == "dark") Configuration.UI_MODE_NIGHT_YES else Configuration.UI_MODE_NIGHT_NO, night)
                         assertTrue(androidx.core.graphics.ColorUtils.calculateContrast(activity.getColor(R.color.ink), activity.getColor(R.color.surface)) >= 4.5)
                         assertTrue(androidx.core.graphics.ColorUtils.calculateContrast(activity.getColor(R.color.ink), activity.getColor(R.color.row_selected)) >= 4.5)
+                        assertTrue(androidx.core.graphics.ColorUtils.calculateContrast(activity.getColor(R.color.secondary_ink), activity.getColor(R.color.card_surface)) >= 4.5)
                         val list = activity.findViewById<ListView>(R.id.listContacts)
                         assertEquals(activity.getColor(R.color.row_selected), (list.getChildAt(0).background as ColorDrawable).color)
-                        val icon = checkNotNull(ContextCompat.getDrawable(activity, R.mipmap.ic_launcher))
+                        val icon = checkNotNull(ContextCompat.getDrawable(activity, R.mipmap.ic_launcher)).mutate()
                         val bitmap = Bitmap.createBitmap(216, 216, Bitmap.Config.ARGB_8888)
                         icon.setBounds(0, 0, 216, 216)
                         icon.draw(Canvas(bitmap))
@@ -215,12 +234,7 @@ class ContactsActivityTest {
                         }
                         bitmap.recycle()
                     }
-                    instrumentation.waitForIdleSync()
-                    val screenshot = checkNotNull(instrumentation.uiAutomation.takeScreenshot())
-                    File(instrumentation.targetContext.cacheDir, "contacts-$name.png").outputStream().use {
-                        screenshot.compress(Bitmap.CompressFormat.PNG, 100, it)
-                    }
-                    screenshot.recycle()
+                    captureScreenshot("contacts-$name")
                 }
             }
         } finally {
@@ -228,10 +242,24 @@ class ContactsActivityTest {
         }
     }
 
+    private fun captureScreenshot(name: String) {
+        val instrumentation = InstrumentationRegistry.getInstrumentation()
+        instrumentation.waitForIdleSync()
+        // Let the surface compositor present the latest configuration before capturing review artifacts.
+        SystemClock.sleep(300)
+        val screenshot = checkNotNull(instrumentation.uiAutomation.takeScreenshot())
+        File(instrumentation.targetContext.cacheDir, "$name.png").outputStream().use {
+            screenshot.compress(Bitmap.CompressFormat.PNG, 100, it)
+        }
+        screenshot.recycle()
+    }
+
     private fun assertPage(scenario: ActivityScenario<MainActivity>, page: Int) {
         scenario.onActivity { activity ->
             val adapter = activity.findViewById<ListView>(R.id.listContacts).adapter as ContactAdapter
             assertEquals(ContactRepository.sample().drop(page * 5).take(5), (0 until adapter.count).map(adapter::getItem))
+            assertEquals("${page * 5 + 1}–${page * 5 + 5} of 15", activity.findViewById<TextView>(R.id.txtContactRange).text.toString())
+            assertEquals("Page ${page + 1} of 3", activity.findViewById<TextView>(R.id.txtPageSummary).text.toString())
             buttonIds.forEachIndexed { index, id ->
                 val button = activity.findViewById<Button>(id)
                 assertEquals(View.VISIBLE, button.visibility)

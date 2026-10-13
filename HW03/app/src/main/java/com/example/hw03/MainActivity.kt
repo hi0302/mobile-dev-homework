@@ -28,7 +28,12 @@ class MainActivity : AppCompatActivity() {
         configureWindow()
 
         txtChoose = findViewById(R.id.txtChoose)
+        ViewCompat.setAccessibilityHeading(findViewById(R.id.txtContactsTitle), true)
+        findViewById<View>(R.id.imgBrand).clipToOutline = true
+        findViewById<TextView>(R.id.txtDirectorySummary).text =
+            resources.getQuantityString(R.plurals.directory_summary, contacts.size, contacts.size, PAGE_SIZE)
         listContacts = findViewById(R.id.listContacts)
+        listContacts.clipToOutline = true
         adapter = ContactAdapter(this)
         listContacts.adapter = adapter
 
@@ -58,6 +63,12 @@ class MainActivity : AppCompatActivity() {
         adapter.selectedId = state.selectedId
         listContacts.setSelection(0)
         pageButtons.render(paginator.pageCount, target)
+        val first = if (contacts.isEmpty()) 0 else target * PAGE_SIZE + 1
+        val last = minOf((target + 1) * PAGE_SIZE, contacts.size)
+        findViewById<TextView>(R.id.txtContactRange).text =
+            getString(R.string.contact_range, first, last, contacts.size)
+        findViewById<TextView>(R.id.txtPageSummary).text =
+            getString(R.string.page_summary, if (paginator.pageCount == 0) 0 else target + 1, paginator.pageCount)
     }
 
     private fun select(contact: Contact) {
@@ -67,8 +78,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateChooseText() {
-        val name = contacts.firstOrNull { it.id == state.selectedId }?.name.orEmpty()
-        txtChoose.text = getString(R.string.you_choose, name)
+        val contact = contacts.firstOrNull { it.id == state.selectedId }
+        txtChoose.text = getString(R.string.you_choose, contact?.name.orEmpty())
+        findViewById<TextView>(R.id.txtSelectionDetail).text =
+            contact?.phone ?: getString(R.string.selection_hint)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
