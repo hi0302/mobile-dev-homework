@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="10dp"
+    android:background="@drawable/bg_thumbnail"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:importantForAccessibility="yes"
+    android:orientation="vertical"
+    android:padding="6dp">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:importantForAccessibility="noHideDescendants">
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_image"
+            android:importantForAccessibility="no"
+            android:scaleType="fitCenter" />
+        <ImageView
+            android:id="@+id/selectionCheck"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="4dp"
+            android:src="@drawable/ic_check"
+            android:importantForAccessibility="no"
+            android:visibility="gone" />
+    </FrameLayout>
+    <TextView
+        android:id="@+id/caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="3dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:importantForAccessibility="no"
+        android:textColor="@color/secondary"
+        android:textSize="12sp" />
+</LinearLayout>

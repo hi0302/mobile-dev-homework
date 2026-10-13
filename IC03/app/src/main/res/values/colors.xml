@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="canvas">#F5F6F8</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="ink">#17212B</color>
+    <color name="secondary">#667180</color>
+    <color name="tertiary">#737F8D</color>
+    <color name="accent">#007AFF</color>
+    <color name="accent_soft">#E8F2FF</color>
+    <color name="separator">#E5E8ED</color>
+    <color name="preview_background">#E9EDF1</color>
+</resources>
