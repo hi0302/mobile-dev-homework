@@ -4,7 +4,7 @@ import android.widget.Button
 import android.view.View
 
 /**
- * TODO: hoàn thiện điều khiển 3 nút trang.
+ * Điều khiển trạng thái và sự kiện của 3 nút trang.
  *  - nút của trang hiện tại: isEnabled = false và alpha = 0.35f (mờ)
  *  - các nút khác: isEnabled = true và alpha = 1f (sáng)
  *  - nút có index >= pageCount thì ẩn (View.GONE)

@@ -2,6 +2,7 @@ package com.example.hw03
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class ContactRepositoryTest {
@@ -14,6 +15,9 @@ class ContactRepositoryTest {
         val uniqueIds = contacts.map { it.id }.toSet()
         assertEquals(15, uniqueIds.size)
         assertEquals((1..15).toList(), contacts.map { it.id })
+        assertEquals(15, contacts.map { it.phone }.toSet().size)
+        val avatars = listOf(R.drawable.avatar_1, R.drawable.avatar_2, R.drawable.avatar_3, R.drawable.avatar_4, R.drawable.avatar_5)
+        assertEquals(List(15) { avatars[it % avatars.size] }, contacts.map { it.avatar })
     }
 
     @Test
@@ -22,9 +26,9 @@ class ContactRepositoryTest {
         for (contact in contacts) {
             assertNotNull(contact.name)
             assertNotNull(contact.phone)
-            assert(contact.name.isNotBlank())
-            assert(contact.phone.isNotBlank())
-            assert(contact.avatar != 0)
+            assertTrue(contact.name.isNotBlank())
+            assertTrue(contact.phone.isNotBlank())
+            assertTrue(contact.avatar != 0)
         }
     }
 }

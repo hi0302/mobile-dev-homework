@@ -69,19 +69,19 @@ File: `ContactRepository.kt`, `ContactAdapter.kt`
 
 File: `Paginator.kt`, `app/src/test/java/com/example/hw03/PaginatorTest.kt` (tạo mới)
 
-[ ] `pageCount`: làm tròn lên (15 item chia 5 được 3, 16 item được 4, danh sách rỗng được 0)
+[x] `pageCount`: làm tròn lên (15 item chia 5 được 3, 16 item được 4, danh sách rỗng được 0)
 
-[ ] `clampPage(page)`: ép số trang về khoảng `[0, pageCount - 1]`, danh sách rỗng trả về 0
+[x] `clampPage(page)`: ép số trang về khoảng `[0, pageCount - 1]`, danh sách rỗng trả về 0
 
-[ ] `itemsOf(page)`: trả về các item của trang (đánh số từ 0), trang cuối lẻ vẫn đúng, trang không tồn tại trả về danh sách rỗng
+[x] `itemsOf(page)`: trả về các item của trang (đánh số từ 0), trang cuối lẻ vẫn đúng, trang không tồn tại trả về danh sách rỗng
 
-[ ] `init` dùng `require(pageSize > 0)`
+[x] `init` dùng `require(pageSize > 0)`
 
-[ ] Sao chép danh sách đầu vào (`toList()`) để dữ liệu bên ngoài đổi không ảnh hưởng 
+[x] Sao chép danh sách đầu vào (`toList()`) để dữ liệu bên ngoài đổi không ảnh hưởng
 
-[ ] Viết `PaginatorTest` (JUnit): 15 item thành 3 trang, trang cuối lẻ, danh sách rỗng, trang 2 chứa item 6 đến 10, trang ngoài phạm vi, `clampPage`, `pageSize = 0` ném lỗi. Chạy test phải pass
+[x] Viết `PaginatorTest` (JUnit): 15 item thành 3 trang, trang cuối lẻ, danh sách rỗng, trang 2 chứa item 6 đến 10, trang ngoài phạm vi, `clampPage`, `pageSize = 0` ném lỗi. Chạy test phải pass
 
-[ ] Giữ nguyên chữ ký: `Paginator<T>(items: List<T>, pageSize: Int)`, `pageCount`, `clampPage(Int): Int`, `itemsOf(Int): List<T>`
+[x] Giữ nguyên chữ ký: `Paginator<T>(items: List<T>, pageSize: Int)`, `pageCount`, `clampPage(Int): Int`, `itemsOf(Int): List<T>`
 
 ## Phần 4 – Nút chuyển trang (Nguyễn Đặng Khôi Nguyên, branch `hw03-page-buttons`)
 
@@ -116,29 +116,50 @@ File: `PageButtonController.kt`
 ## Cách chạy
 
 1. Android Studio, File > Open, chọn thẳng folder HW03 (không mở folder gốc của repo)
-2. Sync Project with Gradle Files, kiểm tra Gradle JDK là jbr-17 nếu IDE báo lỗi JDK
+2. Sync Project with Gradle Files, dùng JDK 25 cho Gradle daemon theo `gradle/gradle-daemon-jvm.properties`
 3. Chọn máy ảo hoặc điện thoại API 24 trở lên, bấm Run
-4. Chạy unit test: chuột phải `PaginatorTest`, Run
+4. Chạy unit test: chuột phải `PaginatorTest`, Run. Hoặc dùng terminal trong HW03:
+
+```powershell
+.\gradlew.bat testDebugUnitTest assembleDebug lintDebug
+# Khi máy ảo hoặc điện thoại đã kết nối:
+.\gradlew.bat connectedDebugAndroidTest
+```
 
 ## Checklist test (cả nhóm tick sau khi merge đủ 4 phần)
 
-- [ ] Mở app: hiện 5 dòng đầu (Nguyễn Văn A đến Đinh Văn D), nút 1 mờ, nút 2 và 3 sáng
-- [ ] TextView ban đầu là "You choose: " (chưa chọn ai)
-- [ ] Bấm một dòng: dòng đó tô vàng, TextView hiển thị đúng tên
-- [ ] Bấm nút 2: hiện 5 dòng kế tiếp, nút 2 mờ, nút 1 và 3 sáng
-- [ ] Bấm nút 3: hiện 5 dòng cuối, nút 3 mờ, nút 1 và 2 sáng
-- [ ] Chọn một dòng ở trang 1, sang trang 2 rồi quay lại: dòng vẫn tô vàng, TextView vẫn giữ tên
-- [ ] Bấm nút đang mờ: không có phản ứng, không bị load lại
-- [ ] Bấm liên tục nhiều lần vào các nút: không crash
-- [ ] Xoay màn hình: giữ nguyên trang, dòng đang chọn và TextView
-- [ ] Bật dark mode: chữ và nền vẫn đọc được, dòng chọn vẫn nổi bật
-- [ ] PaginatorTest pass
+- [x] Mở app: hiện 5 dòng đầu (Nguyễn Văn A đến Đinh Văn D), nút 1 mờ, nút 2 và 3 sáng
+- [x] TextView ban đầu là "You choose: " (chưa chọn ai)
+- [x] Bấm một dòng: dòng đó tô vàng, TextView hiển thị đúng tên
+- [x] Bấm nút 2: hiện 5 dòng kế tiếp, nút 2 mờ, nút 1 và 3 sáng
+- [x] Bấm nút 3: hiện 5 dòng cuối, nút 3 mờ, nút 1 và 2 sáng
+- [x] Chọn một dòng ở trang 1, sang trang 2 rồi quay lại: dòng vẫn tô vàng, TextView vẫn giữ tên
+- [x] Bấm nút đang mờ: không có phản ứng, không bị load lại
+- [x] Bấm liên tục nhiều lần vào các nút: không crash
+- [x] Xoay màn hình: giữ nguyên trang, dòng đang chọn và TextView
+- [x] Bật dark mode: chữ và nền vẫn đọc được, dòng chọn vẫn nổi bật
+- [x] PaginatorTest pass
 
 ## Thay đổi ảnh hưởng người khác
 
-(Ghi vào đây mỗi khi sửa file của người khác hoặc đổi id, key.)
+- Hoàn tất `Paginator.kt` và thêm `PaginatorTest.kt`; giữ nguyên chữ ký API, id view và key Bundle.
+- Đổi launcher icon từ hình người sang số **1**, dùng chung cho icon thường/round và thêm lớp monochrome cho themed icons. Màu số/nền thích ứng light/dark.
+- Thêm `ContactsActivityTest.kt` để kiểm tra tích hợp phần 1, 2, 3, 4. Bổ sung kiểm tra số điện thoại duy nhất, vòng avatar và dùng JUnit assertions trong `ContactRepositoryTest`.
+- Đưa nhãn nút trang vào strings, dùng nền từ theme để tránh overdraw, tăng vùng bấm nút từ 40dp lên 48dp. Bỏ chú thích TODO đã hoàn thành trong `PageButtonController`; bỏ qua cache `.kotlin/` trong Git.
 
 ## Ghi chú
 
 - Toolchain giống IC03 và HW02: AGP 9.3.3, Gradle 9.6.0, compile/target SDK 37, minSdk 24
 - Ảnh đại diện là vector drawable tự vẽ (avatar_1 đến avatar_5), dùng lặp vòng cho 15 liên hệ
+
+
+## Kết quả verify (13/10/2026)
+
+- `testDebugUnitTest`: **12/12 pass** (10 PaginatorTest, 2 ContactRepositoryTest).
+- `assembleDebug` và `assembleDebugAndroidTest`: build thành công.
+- `lintDebug`: **0 lỗi, 1 cảnh báo** về phiên bản AGP mới hơn; giữ toolchain hiện tại của nhóm.
+- `connectedDebugAndroidTest`: **7/7 pass** trên Pixel_7a, Android 17 / API 37. Chạy lại cả 7 test trên APK cuối sau các chỉnh sửa layout cũng pass.
+- Test tích hợp kiểm tra đủ 3 trang, 5 liên hệ/trang, TextView ban đầu và sau chọn; giữ lựa chọn qua đổi trang, tái tạo Activity và xoay ngang/dọc thật; bấm trang hiện tại không tải lại, chuyển trang liên tục; tái sử dụng row, xóa highlight cũ, position không hợp lệ; hiển thị/ẩn/độ mờ/callback của nút; Bundle hợp lệ/không hợp lệ; light/dark với độ tương phản chữ tối thiểu 4.5:1.
+- Đã xem ảnh chụp giao diện và launcher icon số **1** ở cả hai chế độ. Manifest dùng cùng icon cho `icon` và `roundIcon`; icon API 24–25 và adaptive icon API 26+ dùng chung vector số 1.
+
+Ảnh kiểm chứng: [giao diện sáng](docs/screenshots/contacts-light.png), [giao diện tối](docs/screenshots/contacts-dark.png), [icon số 1 sáng](docs/screenshots/launcher-light.png), [icon số 1 tối](docs/screenshots/launcher-dark.png).

@@ -1,19 +1,22 @@
 package com.example.hw03
 
-/**
- * TODO: viết logic phân trang thật + PaginatorTest.
- *  - pageCount: làm tròn lên (15/5 = 3, 16/5 = 4, rỗng = 0)
- *  - clampPage(page): ép về [0, pageCount - 1]
- *  - itemsOf(page): các item của trang, trang không tồn tại trả về rỗng
- *  - require(pageSize > 0)
- * Giữ nguyên chữ ký: Paginator<T>(items, pageSize), pageCount, clampPage, itemsOf
- */
+/** Phân trang trên bản sao dữ liệu đầu vào; chỉ số trang bắt đầu từ 0. */
 class Paginator<T>(items: List<T>, val pageSize: Int) {
+    init {
+        require(pageSize > 0) { "pageSize must be greater than zero" }
+    }
+
     private val data = items.toList()
 
-    val pageCount: Int get() = 1
+    // Dùng phép chia và phần dư để tránh tràn số khi pageSize rất lớn.
+    val pageCount: Int = data.size / pageSize + if (data.size % pageSize == 0) 0 else 1
 
-    fun clampPage(page: Int): Int = 0
+    fun clampPage(page: Int): Int = page.coerceIn(0, maxOf(pageCount - 1, 0))
 
-    fun itemsOf(page: Int): List<T> = data.take(pageSize)
+    fun itemsOf(page: Int): List<T> {
+        if (page !in 0 until pageCount) return emptyList()
+        val start = page * pageSize
+        val count = minOf(pageSize, data.size - start)
+        return data.subList(start, start + count).toList()
+    }
 }

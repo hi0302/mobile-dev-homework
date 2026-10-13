@@ -4,4 +4,7 @@
     <string name="you_choose">You choose: %1$s</string>
     <string name="contact_description">%1$s, %2$s</string>
     <string name="page_button_description">Page %1$d</string>
+    <string name="page_1" translatable="false">1</string>
+    <string name="page_2" translatable="false">2</string>
+    <string name="page_3" translatable="false">3</string>
 </resources>

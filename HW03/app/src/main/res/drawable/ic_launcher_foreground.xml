@@ -2,6 +2,7 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp" android:height="108dp"
     android:viewportWidth="108" android:viewportHeight="108">
-    <path android:fillColor="#1A1A1A" android:pathData="M54,32 m-10,0 a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0 Z" />
-    <path android:fillColor="#1A1A1A" android:pathData="M34,76 C34,62 44,54 54,54 C64,54 74,62 74,76 Z" />
+    <!-- Số 1 nằm trong vùng an toàn của adaptive icon. -->
+    <path android:fillColor="@color/ink"
+        android:pathData="M36,43 L49,32 L60,32 L60,72 L72,72 L72,80 L36,80 L36,72 L48,72 L48,44 L42,49 Z" />
 </vector>
