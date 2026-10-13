@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lint>
+    <!-- PhotoCatalog deliberately loads these user-supplied pairs by their resource names. -->
+    <issue id="UnusedResources">
+        <ignore path="**/res/drawable-nodpi/small_photo_*" />
+        <ignore path="**/res/drawable-nodpi/large_photo_*" />
+    </issue>
+</lint>

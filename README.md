@@ -18,6 +18,7 @@ Mỗi bài có README riêng ghi tiến độ, phân công và quy ước của 
 | Bài | Nội dung | Chi tiết |
 | --- | --- | --- |
 | HW02 | Xây dựng giao diện người dùng (form đăng ký) | [HW02/README.md](HW02/README.md) |
+| IC03 | HorizontalScrollView — thư viện ảnh Moments | [IC03/README.md](IC03/README.md) |
 | HW03 | (cập nhật sau) | |
 
 ## Cấu trúc repo
@@ -28,6 +29,8 @@ mobile-dev-homework/
 ├── .gitignore
 ├── HW02/            <- project Android Studio độc lập
 │   └── README.md    <- README riêng của HW02
+├── IC03/            <- HorizontalScrollView, Kotlin + XML Views
+│   └── README.md    <- hướng dẫn thêm cặp ảnh thumbnail / ảnh lớn
 └── HW03/            <- (các tuần sau tạo tương tự)
 ```
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Moments · IC03</string>
+    <string name="eyebrow">PHOTO STUDY / IC03</string>
+    <string name="gallery_title">Moments</string>
+    <string name="gallery_subtitle">A little collection. A closer look.</string>
+    <string name="collection_title">Your collection</string>
+    <plurals name="photo_count">
+        <item quantity="one">%1$d photo</item>
+        <item quantity="other">%1$d photos</item>
+    </plurals>
+    <string name="preview_label">Selected photo, large image preview</string>
+    <string name="in_focus">IN FOCUS</string>
+    <string name="position_count">%1$02d / %2$02d</string>
+    <string name="photo_caption">Photo-%1$d</string>
+    <string name="selection_message">Photo-%1$d · Selected position: %2$d</string>
+    <string name="preview_description">%1$s, Photo-%2$d. Large image preview.</string>
+    <string name="thumbnail_description">Photo-%1$d, %2$s. Show large image.</string>
+    <string name="selected_state">Selected</string>
+    <string name="unselected_state">Not selected</string>
+    <string name="previous_photo">Previous photo</string>
+    <string name="next_photo">Next photo</string>
+    <string name="gallery_hint">Swipe the strip. Tap a moment.</string>
+    <string name="sample_note">Illustration preview · Add your own photo pair</string>
+    <string name="photo_note">From your collection · Full image preview</string>
+    <string name="thumbnail_only_note">Thumbnail preview · Add the matching large image</string>
+    <string name="photo_01_title">Beyond the pines</string>
+    <string name="photo_02_title">River meadow</string>
+    <string name="photo_03_title">Low tide</string>
+    <string name="photo_04_title">Pebble beach</string>
+    <string name="photo_05_title">Soft horizon</string>
+    <string name="photo_06_title">Hidden falls</string>
+    <string name="photo_07_title">Open water</string>
+    <string name="photo_08_title">The path ahead</string>
+    <string name="photo_09_title">Summer grass</string>
+    <string name="photo_10_title">Forest details</string>
+    <string name="stock_photo_credit">Photo by Paul Jarvis · Unsplash</string>
+</resources>
