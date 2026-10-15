@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">HW04</string>
+
+    <color name="student_selected">#CFE3FF</color>
+
+    <string name="avatar_desc">Ảnh học sinh</string>
+    <string name="btn_first">First</string>
+    <string name="btn_previous">Previous</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_last">Last</string>
+    <string name="detail_placeholder">Chọn một học sinh</string>
+    <string name="fmt_name">Họ tên: %1$s</string>
+    <string name="fmt_class">Lớp: %1$s</string>
+    <string name="fmt_gpa">Điểm trung bình: %1$.1f</string>
 </resources>

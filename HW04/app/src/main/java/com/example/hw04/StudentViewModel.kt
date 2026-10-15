@@ -14,9 +14,8 @@ class StudentViewModel : ViewModel() {
     private val lastIndex get() = students.size - 1
 
     fun select(index: Int) {
-        // chặn index ngoài biên
         if (index !in 0..lastIndex) return
-        if (index == _selectedIndex.value) return   // bấm lại item đang chọn thì bỏ qua
+        if (index == _selectedIndex.value) return
         _selectedIndex.value = index
     }
 
@@ -33,11 +32,10 @@ class StudentViewModel : ViewModel() {
         if (canGoNext(cur)) select(cur + 1)
     }
 
-    // trạng thái nút, người 3 dùng cái này để làm mờ
-    fun canGoPrevious(index: Int = _selectedIndex.value ?: NO_SELECTION) =
+    fun canGoPrevious(index: Int = _selectedIndex.value ?: NO_SELECTION): Boolean =
         index > 0
 
-    fun canGoNext(index: Int = _selectedIndex.value ?: NO_SELECTION) =
+    fun canGoNext(index: Int = _selectedIndex.value ?: NO_SELECTION): Boolean =
         index in 0 until lastIndex
 
     fun getSelectedStudent(): Student? =

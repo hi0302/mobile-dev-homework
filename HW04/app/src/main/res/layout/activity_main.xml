@@ -11,6 +11,11 @@
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#BDBDBD" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentDetail"
         android:name="com.example.hw04.StudentDetailFragment"
