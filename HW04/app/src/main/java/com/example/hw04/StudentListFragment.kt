@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -22,9 +21,6 @@ class StudentListFragment : Fragment(R.layout.fragment_student_list) {
         }
         rv.layoutManager = layoutManager
         rv.adapter = adapter
-        rv.addItemDecoration(
-            DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
-        )
 
         viewModel.selectedIndex.observe(viewLifecycleOwner) { index ->
             adapter.setSelected(index)

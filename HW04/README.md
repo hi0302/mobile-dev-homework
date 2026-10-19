@@ -18,15 +18,15 @@ Bài tập – Fragment, môn Phát triển phần mềm cho thiết bị di đ�
 
 ## Tiến độ
 
-- [ ] Khởi tạo project, MainActivity, layout chứa 2 fragment
-- [ ] Student, StudentViewModel 
-- [ ] StudentRepository, tài nguyên avatar
-- [ ] Extension làm mờ nút `setDimmed()` 
-- [ ] Unit test các trường hợp biên của StudentViewModel 
-- [ ] StudentListFragment, StudentAdapter, vệt chọn 
-- [ ] StudentDetailFragment, 4 nút điều hướng, làm mờ nút 
-- [ ] Kiểm thử toàn bộ theo checklist bên dưới
-- [ ] Nén bài và chạy thử trước khi nộp
+- [x] Khởi tạo project, MainActivity, layout chứa 2 fragment
+- [x] Student, StudentViewModel 
+- [x] StudentRepository, tài nguyên avatar
+- [x] Extension làm mờ nút `setDimmed()` 
+- [x] Unit test các trường hợp biên của StudentViewModel 
+- [x] StudentListFragment, StudentAdapter, vệt chọn 
+- [x] StudentDetailFragment, 4 nút điều hướng, làm mờ nút 
+- [x] Kiểm thử toàn bộ theo checklist bên dưới
+- [x] Nén bài và chạy thử trước khi nộp
 
 ## Phân công
 
@@ -35,36 +35,20 @@ Bài tập – Fragment, môn Phát triển phần mềm cho thiết bị di đ�
 - `Student`: `id`, `name`, `className`, `gpa`, `avatarRes`.
 - `StudentViewModel`: `students`, `selectedIndex` (LiveData, `-1` là chưa chọn), `select()`, `first()`, `previous()`, `next()`, `last()`, `canGoPrevious()`, `canGoNext()`, `getSelectedStudent()`.
 - `activity_main.xml` với 2 `FragmentContainerView` (trọng số 1:2), `MainActivity`, 2 fragment stub rỗng để project biên dịch được.
-----------------------------------
-fragment 1: danh sách (branch hw04-list-fragment)
-StudentListFragment + fragment_student_list.xml + item_student.xml
-StudentAdapter (RecyclerView): bind avatar + mã số, vệt chọn (highlight item đang chọn, đổi màu nền)
-click item → viewModel.select(position)
-observe selectedIndex → cập nhật highlight + scrollToPosition để item được chọn luôn hiện trong tầm nhìn (quan trọng khi bấm Last)
-dùng notifyItemChanged cho item cũ + mới thay vì notifyDataSetChanged cho mượt
-xử lý: bấm lại item đang chọn không bị nháy, index -1 thì không highlight gì
-+++++++++++++++++++++++++++++++++++++++++
-fragment 2: chi tiết + 4 nút (branch hw04-detail-fragment)
-StudentDetailFragment + fragment_student_detail.xml
-hiển thị tiêu đề lớn (mã số), họ tên, lớp, điểm trung bình
-4 nút First/Previous/Next/Last gọi hàm của viewmodel
-làm mờ nút: isEnabled = false + alpha = 0.4f. ở học sinh đầu thì First+Previous mờ, ở học sinh cuối thì Next+Last mờ, chưa chọn ai thì cả 4 nút mờ (hoặc chỉ Next/Last tùy nhóm chốt)
-trạng thái ban đầu khi chưa chọn: hiện placeholder kiểu “chọn một học sinh”, không crash
-xử lý ngoại lệ: dữ liệu rỗng, index ngoài biên
--------------------------------------------
-### 2
+
+### Nguyễn Đặng Khôi Nguyên
 - `StudentRepository`: danh sách khoảng 8-10 học sinh, dữ liệu khác với hình minh họa của đề.
 - Các icon avatar trong `res/drawable`.
 - `ViewExt.kt`: `fun View.setDimmed(dimmed: Boolean)` đặt `isEnabled` và `alpha` (0.4f khi mờ, 1f khi sáng).
 - Unit test cho `StudentViewModel`: chọn đầu, chọn cuối, next ở cuối, previous ở đầu, index ngoài biên, chưa chọn.
 
-### 3
+### Phạm Gia Bảo
 - `fragment_student_list.xml`, `item_student.xml`, `StudentAdapter`.
 - Click item gọi `viewModel.select(position)`.
 - Observe `selectedIndex` để đổi vệt chọn bằng `notifyItemChanged` (item cũ và item mới) và `scrollToPosition`.
 - Xử lý: bấm lại item đang chọn, chưa chọn ai (không tô màu item nào).
 
-### 4
+### Phan Lê Đăng Khoa
 - `fragment_student_detail.xml`, `StudentDetailFragment`.
 - Observe `selectedIndex` để hiển thị mã số (tiêu đề lớn), họ tên, lớp, điểm trung bình.
 - 4 nút gọi `first()`, `previous()`, `next()`, `last()` của ViewModel.
@@ -84,14 +68,14 @@ xử lý ngoại lệ: dữ liệu rỗng, index ngoài biên
 
 ## Checklist kiểm thử
 
-- [ ] Mở app thấy danh sách bên trái, bên phải chưa chọn gì và không crash.
-- [ ] Chọn một học sinh: fragment chi tiết hiện đúng mã số (tiêu đề lớn), họ tên, lớp, điểm trung bình.
-- [ ] Bấm First / Previous / Next / Last: vệt chọn bên danh sách đổi đúng và tự cuộn tới học sinh đó.
-- [ ] Chọn học sinh đầu tiên: First và Previous mờ, không bấm được.
-- [ ] Chọn học sinh cuối cùng: Next và Last mờ, không bấm được.
-- [ ] Chọn học sinh ở giữa: cả 4 nút sáng.
-- [ ] Xoay màn hình: giữ nguyên học sinh đang chọn và trạng thái nút.
-- [ ] Bấm nhanh nhiều lần liên tiếp: không crash, không lệch vệt chọn.
+- [x] Mở app thấy danh sách bên trái, bên phải chưa chọn gì và không crash.
+- [x] Chọn một học sinh: fragment chi tiết hiện đúng mã số (tiêu đề lớn), họ tên, lớp, điểm trung bình.
+- [x] Bấm First / Previous / Next / Last: vệt chọn bên danh sách đổi đúng và tự cuộn tới học sinh đó.
+- [x] Chọn học sinh đầu tiên: First và Previous mờ, không bấm được.
+- [x] Chọn học sinh cuối cùng: Next và Last mờ, không bấm được.
+- [x] Chọn học sinh ở giữa: cả 4 nút sáng.
+- [x] Xoay màn hình: giữ nguyên học sinh đang chọn và trạng thái nút.
+- [x] Bấm nhanh nhiều lần liên tiếp: không crash, không lệch vệt chọn.
 
 ## Ghi chú thay đổi ảnh hưởng người khác
 
