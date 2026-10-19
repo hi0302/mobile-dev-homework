@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand & Theme Colors -->
+    <color name="md_theme_primary">#1565C0</color>
+    <color name="md_theme_onPrimary">#FFFFFF</color>
+    <color name="md_theme_primaryContainer">#D0E4FF</color>
+    <color name="md_theme_onPrimaryContainer">#001D36</color>
+
+    <color name="md_theme_surface">#F8F9FA</color>
+    <color name="md_theme_onSurface">#1F1F1F</color>
+    <color name="md_theme_surfaceVariant">#EBF1F5</color>
+    <color name="md_theme_onSurfaceVariant">#44474E</color>
+
+    <color name="student_selected">#D0E4FF</color>
+    <color name="student_card_stroke">#E0E0E0</color>
+    <color name="student_card_selected_stroke">#1565C0</color>
+
+    <!-- GPA badge colors -->
+    <color name="gpa_high">#2E7D32</color>
+    <color name="gpa_high_bg">#E8F5E9</color>
+    <color name="gpa_mid">#1565C0</color>
+    <color name="gpa_mid_bg">#E3F2FD</color>
+    <color name="gpa_low">#E65100</color>
+    <color name="gpa_low_bg">#FFF3E0</color>
+</resources>
