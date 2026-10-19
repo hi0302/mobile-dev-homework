@@ -15,11 +15,12 @@ Repository chung của nhóm cho các bài tập và đồ án môn **Phát tri�
 
 Mỗi bài có README riêng ghi tiến độ, phân công và quy ước của bài đó.
 
-| Bài | Nội dung | Chi tiết |
-| --- | --- | --- |
+| Bài  | Nội dung                                     | Chi tiết                         |
+|------|----------------------------------------------|----------------------------------|
 | HW02 | Xây dựng giao diện người dùng (form đăng ký) | [HW02/README.md](HW02/README.md) |
-| IC03 | HorizontalScrollView — thư viện ảnh Moments | [IC03/README.md](IC03/README.md) |
-| HW03 | Tùy biến ListView (CustomListDemo) | HW03/README.md |
+| IC03 | HorizontalScrollView — thư viện ảnh Moments  | [IC03/README.md](IC03/README.md) |
+| HW03 | Tùy biến ListView (CustomListDemo)           | HW03/README.md                   | 
+| HW04 | Quản lý danh sách học sinh                   | HW04/README.md                   | 
 
 ## Cấu trúc repo
 
@@ -31,7 +32,10 @@ mobile-dev-homework/
 │   └── README.md    <- README riêng của HW02
 ├── IC03/            <- HorizontalScrollView, Kotlin + XML Views
 │   └── README.md    <- hướng dẫn thêm cặp ảnh thumbnail / ảnh lớn
-└── HW03/            <- (các tuần sau tạo tương tự)
+├── HW03/            <- project HW03
+│   └── README.md    <- README riêng của HW03
+├── HW04/            <- project HW04
+│   └── README.md    <- README riêng của HW04
 ```
 
 Mỗi folder là **một project Android Studio riêng**. Khi mở, dùng **File > Open** và chọn thẳng folder bài (ví dụ `HW02`), **không mở folder gốc** `mobile-dev-homework`.
