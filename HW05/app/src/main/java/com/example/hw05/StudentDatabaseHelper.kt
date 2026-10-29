@@ -9,12 +9,15 @@ class StudentDatabaseHelper(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {
-        db.execSQL("""CREATE TABLE $TABLE_CLASSES (
+        if (!tableExists(db, TABLE_CLASSES)) {
+            db.execSQL("""CREATE TABLE $TABLE_CLASSES (
             $COLUMN_CLASS_ID TEXT PRIMARY KEY NOT NULL,
             $COLUMN_CLASS_NAME TEXT NOT NULL,
             $COLUMN_CLASS_SIZE INTEGER NOT NULL
         )""".trimIndent())
-        db.execSQL("""CREATE TABLE $TABLE_STUDENTS (
+        }
+        if (!tableExists(db, TABLE_STUDENTS)) {
+            db.execSQL("""CREATE TABLE $TABLE_STUDENTS (
             $COLUMN_STUDENT_ID TEXT PRIMARY KEY NOT NULL,
             $COLUMN_STUDENT_NAME TEXT NOT NULL,
             $COLUMN_STUDENT_CLASS_ID TEXT NOT NULL,
@@ -23,21 +26,41 @@ class StudentDatabaseHelper(context: Context) :
                 REFERENCES $TABLE_CLASSES($COLUMN_CLASS_ID)
                 ON UPDATE CASCADE ON DELETE RESTRICT
         )""".trimIndent())
-
-        sampleClasses.forEach { (id, name, size) ->
-            db.insertOrThrow(TABLE_CLASSES, null, ContentValues().apply {
-                put(COLUMN_CLASS_ID, id)
-                put(COLUMN_CLASS_NAME, name)
-                put(COLUMN_CLASS_SIZE, size)
-            })
         }
-        sampleStudents.forEach { student ->
-            db.insertOrThrow(TABLE_STUDENTS, null, ContentValues().apply {
-                put(COLUMN_STUDENT_ID, student.id)
-                put(COLUMN_STUDENT_NAME, student.name)
-                put(COLUMN_STUDENT_CLASS_ID, student.classId)
-                put(COLUMN_STUDENT_GPA, student.gpa)
-            })
+
+        if (tableIsEmpty(db, TABLE_CLASSES)) {
+            sampleClasses.forEach { (id, name, size) ->
+                db.insertOrThrow(TABLE_CLASSES, null, ContentValues().apply {
+                    put(COLUMN_CLASS_ID, id)
+                    put(COLUMN_CLASS_NAME, name)
+                    put(COLUMN_CLASS_SIZE, size)
+                })
+            }
+        }
+        if (tableIsEmpty(db, TABLE_STUDENTS)) {
+            sampleStudents.forEach { student ->
+                db.insertOrThrow(TABLE_STUDENTS, null, ContentValues().apply {
+                    put(COLUMN_STUDENT_ID, student.id)
+                    put(COLUMN_STUDENT_NAME, student.name)
+                    put(COLUMN_STUDENT_CLASS_ID, student.classId)
+                    put(COLUMN_STUDENT_GPA, student.gpa)
+                })
+            }
+        }
+    }
+
+    private fun tableExists(db: SQLiteDatabase, tableName: String): Boolean {
+        db.rawQuery(
+            "SELECT 1 FROM sqlite_master WHERE type = ? AND name = ? LIMIT 1",
+            arrayOf("table", tableName)
+        ).use { cursor ->
+            return cursor.moveToFirst()
+        }
+    }
+
+    private fun tableIsEmpty(db: SQLiteDatabase, tableName: String): Boolean {
+        db.rawQuery("SELECT 1 FROM $tableName LIMIT 1", null).use { cursor ->
+            return !cursor.moveToFirst()
         }
     }
 
