@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Quản lý Học sinh</string>
+    <string name="app_subtitle">Danh sách &amp; Chi tiết học sinh</string>
+
+    <string name="avatar_desc">Ảnh đại diện học sinh</string>
+    <string name="btn_first">First</string>
+    <string name="btn_previous">Previous</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_last">Last</string>
+
+    <string name="fmt_selected_student">Bạn đang chọn sinh viên có mã số: %1$s</string>
+    <string name="selected_student_none">Chưa chọn sinh viên</string>
+
+    <string name="detail_placeholder">Chưa chọn học sinh</string>
+    <string name="detail_placeholder_hint">Vui lòng chọn một học sinh từ danh sách bên trái để xem thông tin chi tiết.</string>
+
+    <string name="label_student_id">Mã học sinh</string>
+    <string name="label_name">Họ và tên</string>
+    <string name="label_class">Lớp học</string>
+    <string name="label_gpa">Điểm trung bình (GPA)</string>
+
+    <string name="gpa_excellent">Xuất sắc</string>
+    <string name="gpa_good">Khá / Giỏi</string>
+    <string name="gpa_average">Trung bình</string>
+
+    <string name="fmt_id">Mã số: %1$s</string>
+    <string name="fmt_name">Họ tên: %1$s</string>
+    <string name="fmt_class">Lớp: %1$s</string>
+    <string name="fmt_gpa">Điểm trung bình: %1$.1f</string>
+</resources>
