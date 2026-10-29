@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "HW04"
+rootProject.name = "HW05"
 include(":app")
  

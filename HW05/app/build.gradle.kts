@@ -9,7 +9,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.hw04"
+        applicationId = "com.example.hw05"
         minSdk = 24
         targetSdk = 37
         versionCode = 1
