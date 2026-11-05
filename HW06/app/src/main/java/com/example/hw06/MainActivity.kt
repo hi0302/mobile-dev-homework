@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
                         // Tạo nhịp hiển thị để người dùng quan sát được thanh tiến trình.
                         if (percent < 100) {
                             try {
-                                Thread.sleep(10)
+                                Thread.sleep(1)
                             } catch (_: InterruptedException) {
                                 Thread.currentThread().interrupt()
                             }
