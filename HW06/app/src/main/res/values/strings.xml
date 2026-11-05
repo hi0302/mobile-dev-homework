@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HW06 Progress</string>
+    <string name="screen_title">Progress bar</string>
+    <string name="step_count_hint">Nhập tổng số bước</string>
+    <string name="progress_zero" formatted="false">0%</string>
+    <string name="progress_percent">%1$d%%</string>
+    <string name="button_do_it_again">Do it again</string>
+    <string name="error_invalid_step_count">Vui lòng nhập một số nguyên dương.</string>
+</resources>
