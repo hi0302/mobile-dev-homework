@@ -1,0 +1,142 @@
+package com.example.hw07
+
+data class SingleItem(
+    val pubDate: String,
+    val title: String,
+    val description: String,
+    val link: String
+) {
+    override fun toString(): String = title
+}
+
+data class ChannelItem(
+    val channelName: String,
+    val rssUrl: String
+)
+
+object RssDataSource {
+    val newsSources: Map<String, List<ChannelItem>> = linkedMapOf(
+        "VNEXPRESS" to listOf(
+            ChannelItem("THẾ GIỚI", "https://vnexpress.net/rss/the-gioi.rss"),
+            ChannelItem("THỜI SỰ", "https://vnexpress.net/rss/thoi-su.rss"),
+            ChannelItem("KINH DOANH", "https://vnexpress.net/rss/kinh-doanh.rss"),
+            ChannelItem("GIẢI TRÍ", "https://vnexpress.net/rss/giai-tri.rss"),
+            ChannelItem("THỂ THAO", "https://vnexpress.net/rss/the-thao.rss"),
+            ChannelItem("PHÁP LUẬT", "https://vnexpress.net/rss/phap-luat.rss"),
+            ChannelItem("GIÁO DỤC", "https://vnexpress.net/rss/giao-duc.rss"),
+            ChannelItem("GÓC NHÌN", "https://vnexpress.net/rss/goc-nhin.rss"),
+            ChannelItem("BẤT ĐỘNG SẢN", "https://vnexpress.net/rss/bat-dong-san.rss"),
+            ChannelItem("TIN MỚI NHẤT", "https://vnexpress.net/rss/tin-moi-nhat.rss"),
+            ChannelItem("TIN NỔI BẬT", "https://vnexpress.net/rss/tin-noi-bat.rss"),
+            ChannelItem("SỨC KHỎE", "https://vnexpress.net/rss/suc-khoe.rss"),
+            ChannelItem("ĐỜI SỐNG", "https://vnexpress.net/rss/gia-dinh.rss"),
+            ChannelItem("DU LỊCH", "https://vnexpress.net/rss/du-lich.rss"),
+            ChannelItem("KHOA HỌC CÔNG NGHỆ", "https://vnexpress.net/rss/khoa-hoc-cong-nghe.rss"),
+            ChannelItem("XE", "https://vnexpress.net/rss/oto-xe-may.rss"),
+            ChannelItem("Ý KIẾN", "https://vnexpress.net/rss/y-kien.rss"),
+            ChannelItem("TÂM SỰ", "https://vnexpress.net/rss/tam-su.rss"),
+            ChannelItem("VNE-GO", "https://vnexpress.net/rss/vne-go.rss"),
+            ChannelItem("THƯ GIÃN", "https://vnexpress.net/rss/thu-gian.rss"),
+            ChannelItem("SPOTLIGHT", "https://vnexpress.net/rss/spotlight.rss"),
+            ChannelItem("TIN XEM NHIỀU", "https://vnexpress.net/rss/tin-xem-nhieu.rss")
+        ),
+        "DÂN TRÍ" to listOf(
+            ChannelItem("TRANG CHỦ", "https://dantri.com.vn/rss/home.rss"),
+            ChannelItem("SỰ KIỆN", "https://dantri.com.vn/rss/su-kien.rss"),
+            ChannelItem("THỜI SỰ", "https://dantri.com.vn/rss/thoi-su.rss"),
+            ChannelItem("THẾ GIỚI", "https://dantri.com.vn/rss/the-gioi.rss"),
+            ChannelItem("GIÁ VÀNG", "https://dantri.com.vn/rss/gia-vang.rss"),
+            ChannelItem("ĐỜI SỐNG", "https://dantri.com.vn/rss/doi-song.rss"),
+            ChannelItem("THỂ THAO", "https://dantri.com.vn/rss/the-thao.rss"),
+            ChannelItem("LAO ĐỘNG - VIỆC LÀM", "https://dantri.com.vn/rss/lao-dong-viec-lam.rss"),
+            ChannelItem("GIÁO DỤC", "https://dantri.com.vn/rss/giao-duc.rss"),
+            ChannelItem("TẤM LÒNG NHÂN ÁI", "https://dantri.com.vn/rss/tam-long-nhan-ai.rss"),
+            ChannelItem("KINH DOANH", "https://dantri.com.vn/rss/kinh-doanh.rss"),
+            ChannelItem("BẤT ĐỘNG SẢN", "https://dantri.com.vn/rss/bat-dong-san.rss"),
+            ChannelItem("GIẢI TRÍ", "https://dantri.com.vn/rss/giai-tri.rss"),
+            ChannelItem("DU LỊCH", "https://dantri.com.vn/rss/du-lich.rss"),
+            ChannelItem("PHÁP LUẬT", "https://dantri.com.vn/rss/phap-luat.rss"),
+            ChannelItem("SỨC KHỎE", "https://dantri.com.vn/rss/suc-khoe.rss"),
+            ChannelItem("CÔNG NGHỆ", "https://dantri.com.vn/rss/cong-nghe.rss"),
+            ChannelItem("Ô TÔ - XE MÁY", "https://dantri.com.vn/rss/o-to-xe-may.rss"),
+            ChannelItem("TÌNH YÊU - GIỚI TÍNH", "https://dantri.com.vn/rss/tinh-yeu-gioi-tinh.rss"),
+            ChannelItem("KHOA HỌC", "https://dantri.com.vn/rss/khoa-hoc.rss"),
+            ChannelItem("NỘI VỤ", "https://dantri.com.vn/rss/noi-vu.rss"),
+            ChannelItem("BẠN ĐỌC", "https://dantri.com.vn/rss/ban-doc.rss"),
+            ChannelItem("TÂM ĐIỂM", "https://dantri.com.vn/rss/tam-diem.rss"),
+            ChannelItem("DMAGAZINE", "https://dantri.com.vn/rss/dmagazine.rss"),
+            ChannelItem("INFOGRAPHIC", "https://dantri.com.vn/rss/infographic.rss"),
+            ChannelItem("PHOTO NEWS", "https://dantri.com.vn/rss/photo-news.rss"),
+            ChannelItem("DNEWS", "https://dantri.com.vn/rss/dnews.rss"),
+            ChannelItem("TỌA ĐÀM TRỰC TUYẾN", "https://dantri.com.vn/rss/toa-dam-truc-tuyen.rss"),
+            ChannelItem("XỔ SỐ", "https://dantri.com.vn/rss/xo-so.rss"),
+            ChannelItem("INTERACTIVE", "https://dantri.com.vn/rss/interactive.rss"),
+            ChannelItem("TẾT", "https://dantri.com.vn/rss/tet.rss"),
+            ChannelItem("PHOTO STORY", "https://dantri.com.vn/rss/photo-story.rss"),
+            ChannelItem("D-BUZZ", "https://dantri.com.vn/rss/d-buzz.rss"),
+            ChannelItem("THỜI TIẾT", "https://dantri.com.vn/rss/thoi-tiet.rss"),
+            ChannelItem("DT360", "https://dantri.com.vn/rss/dt360.rss")
+        ),
+        "THANH NIÊN" to listOf(
+            ChannelItem("TRANG CHỦ", "https://thanhnien.vn/rss/home.rss"),
+            ChannelItem("THỜI SỰ", "https://thanhnien.vn/rss/thoi-su.rss"),
+            ChannelItem("CHÍNH TRỊ", "https://thanhnien.vn/rss/chinh-tri.rss"),
+            ChannelItem("THẾ GIỚI", "https://thanhnien.vn/rss/the-gioi.rss"),
+            ChannelItem("CHÀO NGÀY MỚI", "https://thanhnien.vn/rss/chao-ngay-moi.rss"),
+            ChannelItem("KINH TẾ", "https://thanhnien.vn/rss/kinh-te.rss"),
+            ChannelItem("ĐỜI SỐNG", "https://thanhnien.vn/rss/doi-song.rss"),
+            ChannelItem("SỨC KHỎE", "https://thanhnien.vn/rss/suc-khoe.rss"),
+            ChannelItem("GIỚI TRẺ", "https://thanhnien.vn/rss/gioi-tre.rss"),
+            ChannelItem("TIÊU DÙNG THÔNG MINH", "https://thanhnien.vn/rss/tieu-dung-thong-minh.rss"),
+            ChannelItem("GIÁO DỤC", "https://thanhnien.vn/rss/giao-duc.rss"),
+            ChannelItem("DU LỊCH", "https://thanhnien.vn/rss/du-lich.rss"),
+            ChannelItem("VĂN HÓA", "https://thanhnien.vn/rss/van-hoa.rss"),
+            ChannelItem("GIẢI TRÍ", "https://thanhnien.vn/rss/giai-tri.rss"),
+            ChannelItem("THỂ THAO", "https://thanhnien.vn/rss/the-thao.rss"),
+            ChannelItem("CÔNG NGHỆ", "https://thanhnien.vn/rss/cong-nghe.rss"),
+            ChannelItem("XE", "https://thanhnien.vn/rss/xe.rss"),
+            ChannelItem("THỜI TRANG TRẺ", "https://thanhnien.vn/rss/thoi-trang-tre.rss"),
+            ChannelItem("BẠN ĐỌC", "https://thanhnien.vn/rss/ban-doc.rss"),
+            ChannelItem("RAO VẶT", "https://thanhnien.vn/rss/rao-vat.rss"),
+            ChannelItem("VIDEO", "https://thanhnien.vn/rss/video.rss"),
+            ChannelItem("DIỄN ĐÀN", "https://thanhnien.vn/rss/dien-dan.rss"),
+            ChannelItem("PODCAST", "https://thanhnien.vn/rss/podcast.rss"),
+            ChannelItem("NHẬT KÝ TẾT VIỆT", "https://thanhnien.vn/rss/nhat-ky-tet-viet.rss"),
+            ChannelItem("CÙNG CON ĐI TIẾP CUỘC ĐỜI", "https://thanhnien.vn/rss/cung-con-di-tiep-cuoc-doi.rss"),
+            ChannelItem("MAGAZINE", "https://thanhnien.vn/rss/magazine.rss"),
+            ChannelItem("BẠN CẦN BIẾT", "https://thanhnien.vn/rss/ban-can-biet.rss"),
+            ChannelItem("CẢI CHÍNH", "https://thanhnien.vn/rss/cai-chinh.rss"),
+            ChannelItem("BLOG PHÓNG VIÊN", "https://thanhnien.vn/rss/blog-phong-vien.rss"),
+            ChannelItem("TÔI VIẾT", "https://thanhnien.vn/rss/toi-viet.rss"),
+            ChannelItem("VIỆC LÀM", "https://thanhnien.vn/rss/viec-lam.rss"),
+            ChannelItem("TNO", "https://thanhnien.vn/rss/tno.rss"),
+            ChannelItem("TIN 24H", "https://thanhnien.vn/rss/tin-24h.rss"),
+            ChannelItem("TIN THỊ TRƯỜNG", "https://thanhnien.vn/rss/thi-truong.rss"),
+            ChannelItem("TIN NHANH 360", "https://thanhnien.vn/rss/tin-nhanh-360.rss")
+        ),
+        "TUỔI TRẺ" to listOf(
+            ChannelItem("TRANG CHỦ", "https://tuoitre.vn/rss/tin-moi-nhat.rss"),
+            ChannelItem("THỜI SỰ", "https://tuoitre.vn/rss/thoi-su.rss"),
+            ChannelItem("THẾ GIỚI", "https://tuoitre.vn/rss/the-gioi.rss"),
+            ChannelItem("PHÁP LUẬT", "https://tuoitre.vn/rss/phap-luat.rss"),
+            ChannelItem("KINH DOANH", "https://tuoitre.vn/rss/kinh-doanh.rss"),
+            ChannelItem("CÔNG NGHỆ", "https://tuoitre.vn/rss/cong-nghe.rss"),
+            ChannelItem("XE", "https://tuoitre.vn/rss/xe.rss"),
+            ChannelItem("NHỊP SỐNG TRẺ", "https://tuoitre.vn/rss/nhip-song-tre.rss"),
+            ChannelItem("VĂN HÓA", "https://tuoitre.vn/rss/van-hoa.rss"),
+            ChannelItem("GIẢI TRÍ", "https://tuoitre.vn/rss/giai-tri.rss"),
+            ChannelItem("THỂ THAO", "https://tuoitre.vn/rss/the-thao.rss"),
+            ChannelItem("GIÁO DỤC", "https://tuoitre.vn/rss/giao-duc.rss"),
+            ChannelItem("KHOA HỌC", "https://tuoitre.vn/rss/khoa-hoc.rss"),
+            ChannelItem("SỨC KHỎE", "https://tuoitre.vn/rss/suc-khoe.rss"),
+            ChannelItem("GIẢ THẬT", "https://tuoitre.vn/rss/gia-that.rss"),
+            ChannelItem("THƯ GIÃN", "https://tuoitre.vn/rss/thu-gian.rss"),
+            ChannelItem("BẠN ĐỌC", "https://tuoitre.vn/rss/ban-doc.rss"),
+            ChannelItem("DU LỊCH", "https://tuoitre.vn/rss/du-lich.rss"),
+            ChannelItem("VIDEO", "https://tuoitre.vn/rss/video.rss")
+        ),
+        "HCMUS FIT" to listOf(
+            ChannelItem("TIN TỨC & THÔNG BÁO", "https://www.fit.hcmus.edu.vn/vn/feed.aspx")
+        )
+    )
+}
