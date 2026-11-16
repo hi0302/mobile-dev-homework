@@ -1,7 +1,8 @@
 package com.example.hw07
 
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.net.Uri
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -14,14 +15,18 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toDrawable
+import androidx.core.net.toUri
 import java.util.concurrent.Executors
 
 class ShowHeadlinesActivity : AppCompatActivity() {
 
     private var newsList = ArrayList<SingleItem>()
+    private var channelLogoBitmap: Bitmap? = null
     private lateinit var myListView: ListView
     private lateinit var progressBar: ProgressBar
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
@@ -35,25 +40,31 @@ class ShowHeadlinesActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
 
         tvScreenTitle.text = "ITEMS IN CHANNEL $channelName – $paperName"
+        channelLogoBitmap = RssParser.getCachedOrFallbackLogo(this, paperName)
 
         myListView.setOnItemClickListener { _, _, position, _ ->
             val selectedStoryItem = newsList[position]
             showNiceDialogBox(selectedStoryItem, channelName)
         }
 
-        loadRssInBackground(urlAddress)
+        loadRssInBackground(paperName, urlAddress)
     }
 
-    private fun loadRssInBackground(urlAddress: String) {
+    private fun loadRssInBackground(paperName: String, urlAddress: String) {
         progressBar.visibility = View.VISIBLE
         val executor = Executors.newSingleThreadExecutor()
         val mainHandler = Handler(Looper.getMainLooper())
+        val appContext = applicationContext
 
         executor.execute {
-            val result = RssParser.fetchRssItems(urlAddress)
+            val feedResult = RssParser.fetchRssFeed(appContext, paperName, urlAddress)
             mainHandler.post {
                 progressBar.visibility = View.GONE
-                newsList = result
+                newsList = feedResult.items
+                if (feedResult.channelLogoBitmap != null) {
+                    channelLogoBitmap = feedResult.channelLogoBitmap
+                }
+
                 if (newsList.isEmpty()) {
                     Toast.makeText(this, "Không tải được dữ liệu RSS!", Toast.LENGTH_SHORT).show()
                 } else {
@@ -71,7 +82,6 @@ class ShowHeadlinesActivity : AppCompatActivity() {
 
     private fun showNiceDialogBox(selectedStoryItem: SingleItem, channelName: String) {
         val title = selectedStoryItem.title
-        // Loại bỏ thẻ <img> nếu có trong CDATA description của báo Việt Nam để hộp thoại hiển thị gọn gàng
         val rawDescription = selectedStoryItem.description.replace(Regex("<img[^>]*>"), "")
         val cleanDescription = Html.fromHtml(rawDescription, Html.FROM_HTML_MODE_LEGACY).toString().trim()
 
@@ -88,9 +98,17 @@ class ShowHeadlinesActivity : AppCompatActivity() {
                 dialog.dismiss()
             }
 
+        // Gắn logo (từ RSS hoặc ảnh dự phòng) vào góc trên bên trái Dialog
+        val bitmap = channelLogoBitmap
+        if (bitmap != null) {
+            builder.setIcon(bitmap.toDrawable(resources))
+        } else {
+            builder.setIcon(R.mipmap.ic_launcher)
+        }
+
         if (selectedStoryItem.link.isNotEmpty()) {
             builder.setNegativeButton("More") { _, _ ->
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(selectedStoryItem.link))
+                val browserIntent = Intent(Intent.ACTION_VIEW, selectedStoryItem.link.toUri())
                 startActivity(browserIntent)
             }
         }

@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@android:id/text1"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="140dp"
     android:background="@drawable/bg_item_selector"
-    android:gravity="center"
-    android:padding="12dp"
-    android:textColor="#000000"
-    android:textSize="18sp"
-    android:textStyle="normal" />
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/imgNewspaperLogo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="RSS Channel Logo"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/tvFallbackName"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</FrameLayout>

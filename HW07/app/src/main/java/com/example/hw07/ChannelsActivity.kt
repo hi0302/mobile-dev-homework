@@ -1,6 +1,5 @@
 package com.example.hw07
 
-//noinspection SuspiciousImport
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -16,7 +15,7 @@ class ChannelsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
-        val paperName = intent.getStringExtra("PAPER_NAME") ?: "THANH NIÊN"
+        val paperName = intent.getStringExtra("PAPER_NAME") ?: "VNEXPRESS"
         val tvScreenTitle = findViewById<TextView>(R.id.tvScreenTitle)
         val myListView = findViewById<ListView>(R.id.myListView)
 
