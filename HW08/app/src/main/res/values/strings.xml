@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">HW08 - Kabaddi Kounter</string>
+    <string name="title_kabaddi">Kabaddi Kounter</string>
+    <string name="team_a">Team A</string>
+    <string name="team_b">Team B</string>
+    <string name="plus_one_team_a">+1 Team A</string>
+    <string name="plus_one_team_b">+1 Team B</string>
+    <string name="selected_team_label">Selected Team:</string>
+    <string name="selected_score_label">Selected Score:</string>
+    <string name="btn_select_team">Select Team</string>
+    <string name="btn_reset">Reset</string>
+</resources>

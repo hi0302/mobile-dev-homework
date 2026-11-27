@@ -19,8 +19,12 @@ Mỗi bài có README riêng ghi tiến độ, phân công và quy ước của 
 |------|----------------------------------------------|----------------------------------|
 | HW02 | Xây dựng giao diện người dùng (form đăng ký) | [HW02/README.md](HW02/README.md) |
 | IC03 | HorizontalScrollView — thư viện ảnh Moments  | [IC03/README.md](IC03/README.md) |
-| HW03 | Tùy biến ListView (CustomListDemo)           | HW03/README.md                   | 
-| HW04 | Quản lý danh sách học sinh                   | HW04/README.md                   | 
+| HW03 | Tùy biến ListView (CustomListDemo)           | [HW03/README.md](HW03/README.md) | 
+| HW04 | Quản lý danh sách học sinh                   | [HW04/README.md](HW04/README.md) | 
+| HW05 | SQLite cục bộ lưu danh sách học sinh         | [HW05/README.md](HW05/README.md) | 
+| HW06 | Progress bar với luồng nền                   | [HW06/README.md](HW06/README.md) | 
+| HW07 | Đọc tin RSS feeds                            | [HW07/README.md](HW07/README.md) | 
+| HW08 | ViewModel, Data Binding & Biến đổi LiveData  | [HW08/README.md](HW08/README.md) | 
 
 ## Cấu trúc repo
 
